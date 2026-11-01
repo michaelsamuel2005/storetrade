@@ -1,0 +1,1887 @@
+{
+  "name": "c6742509-6f03-4a87-8b86-0d1eb45d7b2e",
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-GB",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-GB",
+    "tables": [
+      {
+        "name": "Fact_Sales",
+        "lineageTag": "8cf40941-694c-40a5-8d4c-a6e855582c48",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "lineageTag": "0e404d0e-0e7b-428f-89b7-14aab31d6f56",
+            "formatString": "Short Date",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "transaction_timestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "transaction_timestamp",
+            "lineageTag": "e5a24428-db7a-4c94-b284-08c47f13c54c",
+            "formatString": "General Date",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "basket_id",
+            "dataType": "string",
+            "sourceColumn": "basket_id",
+            "lineageTag": "8c217769-94c0-490d-af81-fe4c07a41cd6",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "household_id",
+            "dataType": "string",
+            "sourceColumn": "household_id",
+            "lineageTag": "8e5f0202-d2c0-4852-9c8b-b2172b6d9554",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "store_id",
+            "dataType": "string",
+            "sourceColumn": "store_id",
+            "lineageTag": "09bb4689-94e7-4ce8-8d9a-a36ffce11b52",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "product_id",
+            "dataType": "string",
+            "sourceColumn": "product_id",
+            "lineageTag": "25b79221-2f67-4ef0-9762-a41c40367621",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "quantity",
+            "dataType": "double",
+            "sourceColumn": "quantity",
+            "lineageTag": "92a99f8c-cbac-4388-aa5b-ccb49500d2e4",
+            "formatString": "#,0",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "sales_value",
+            "dataType": "decimal",
+            "sourceColumn": "sales_value",
+            "lineageTag": "4948cd11-6e80-4ae6-bb62-5f74f6a11cbd",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "retail_disc",
+            "dataType": "decimal",
+            "sourceColumn": "retail_disc",
+            "lineageTag": "b8a8b71c-f0be-4ef3-bb7c-3d9818c96234",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "coupon_match_disc",
+            "dataType": "decimal",
+            "sourceColumn": "coupon_match_disc",
+            "lineageTag": "16cf431e-216f-4f25-8cb5-1692724f457f",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "coupon_disc",
+            "dataType": "decimal",
+            "sourceColumn": "coupon_disc",
+            "lineageTag": "bf3ae87e-7579-4d9c-9902-bc49be4de4ed",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "shelf_value",
+            "dataType": "decimal",
+            "sourceColumn": "shelf_value",
+            "lineageTag": "d1df7c96-1d8e-49f4-a1e3-d58243eaac1d",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "line_flag",
+            "dataType": "string",
+            "sourceColumn": "line_flag",
+            "lineageTag": "835a7c82-e20f-4b1a-8b87-19cb45bca589",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "source_week",
+            "dataType": "int64",
+            "sourceColumn": "source_week",
+            "lineageTag": "e470e674-19df-4b4a-a3dc-030e7b737d05",
+            "formatString": "0",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Sales",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "// Query: Fact_Sales   (Enable load: on). One row per transaction line: 1,469,307 rows, none removed (reconciled to control_totals.csv).",
+                "// Adds: Date (store-local date), shelf_value (value before discounts), line_flag (rules DQ01 and DQ02).",
+                "// Rule DQ03 (petrol quantity) and DQ04 (unknown product) are handled in Dim_Product, not by deleting lines.",
+                "let",
+                "    Source = Transactions_Raw,",
+                "    AddDate = Table.AddColumn(Source, \"Date\", each DateTime.Date([transaction_timestamp]), type date),",
+                "    // shelf_value = what the lines would have cost with no retail or coupon-match discount. Assumption, see docs/BUSINESS_RULES.md:",
+                "    // sales_value is net of retail_disc and coupon_match_disc. coupon_disc is manufacturer-funded and is not added back.",
+                "    AddShelf = Table.AddColumn(AddDate, \"shelf_value\", each [sales_value] + [retail_disc] + [coupon_match_disc], Currency.Type),",
+                "    AddFlag = Table.AddColumn(",
+                "        AddShelf, \"line_flag\",",
+                "        each if [quantity] = 0 then \"Zero quantity\" else if [sales_value] = 0 then \"Free item\" else \"Sale\",",
+                "        type text",
+                "    ),",
+                "    Renamed = Table.RenameColumns(AddFlag, {{\"week\", \"source_week\"}}),",
+                "    Ordered = Table.ReorderColumns(",
+                "        Renamed,",
+                "        {\"Date\", \"transaction_timestamp\", \"basket_id\", \"household_id\", \"store_id\", \"product_id\", \"quantity\",",
+                "         \"sales_value\", \"retail_disc\", \"coupon_match_disc\", \"coupon_disc\", \"shelf_value\", \"line_flag\", \"source_week\"}",
+                "    )",
+                "in",
+                "    Ordered"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Product",
+        "lineageTag": "bd5f65f6-0308-4c72-801c-7c315a0643b1",
+        "columns": [
+          {
+            "name": "product_id",
+            "dataType": "string",
+            "sourceColumn": "product_id",
+            "lineageTag": "3a3e76a4-1fe6-4b0f-a384-d1b723369c85",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "manufacturer_id",
+            "dataType": "string",
+            "sourceColumn": "manufacturer_id",
+            "lineageTag": "464aca5a-348d-4b8d-b520-5787944591d4",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "department",
+            "dataType": "string",
+            "sourceColumn": "department",
+            "lineageTag": "81f7bd33-c997-41ff-9ca4-916bbd04b331",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "brand",
+            "dataType": "string",
+            "sourceColumn": "brand",
+            "lineageTag": "d15d65e5-bd9f-4b8a-9d88-402d3af403f7",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "product_category",
+            "dataType": "string",
+            "sourceColumn": "product_category",
+            "lineageTag": "b91fb57c-7baa-4b65-b825-c134690b530f",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "product_type",
+            "dataType": "string",
+            "sourceColumn": "product_type",
+            "lineageTag": "5d211d72-5870-404a-b8a7-a9feabb70707",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "package_size",
+            "dataType": "string",
+            "sourceColumn": "package_size",
+            "lineageTag": "c265adc5-d109-4283-9066-62c1068b2bfd",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsFuel",
+            "dataType": "boolean",
+            "sourceColumn": "IsFuel",
+            "lineageTag": "81ba1c64-0519-4c45-92f4-91dbfb7fff61",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Product",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "// Query: Dim_Product   (Enable load: on). 92,331 products from the product file + 17 products that appear on sales lines but not in the file.",
+                "// References only other queries (Products_Raw, Transactions_Raw) and reads no file itself, so the Formula.Firewall allows it.",
+                "// DQ03: IsFuel marks petrol (product_type starts with GASOLINE). Its \"quantity\" is not a unit count, so Units measures exclude it.",
+                "// DQ04: sales-line products missing from the product file are added with department UNKNOWN, so no sales fall out of a chart.",
+                "let",
+                "    Products = Products_Raw,",
+                "    // keys that are on sales lines but not in the product file",
+                "    FactKeys = Table.Distinct(Table.SelectColumns(Transactions_Raw, {\"product_id\"})),",
+                "    Unmatched = Table.RemoveColumns(",
+                "        Table.NestedJoin(FactKeys, {\"product_id\"}, Products, {\"product_id\"}, \"m\", JoinKind.LeftAnti), {\"m\"}",
+                "    ),",
+                "    UnknownRows = Table.AddColumn(",
+                "        Table.AddColumn(",
+                "            Table.AddColumn(",
+                "                Table.AddColumn(",
+                "                    Table.AddColumn(",
+                "                        Table.AddColumn(Unmatched, \"manufacturer_id\", each null, type text),",
+                "                        \"department\", each \"UNKNOWN\", type text),",
+                "                    \"brand\", each \"Unknown\", type text),",
+                "                \"product_category\", each \"UNKNOWN\", type text),",
+                "            \"product_type\", each \"UNKNOWN\", type text),",
+                "        \"package_size\", each null, type text",
+                "    ),",
+                "    Combined = Table.Combine({Products, Table.ReorderColumns(UnknownRows, Table.ColumnNames(Products))}),",
+                "    AddFuel = Table.AddColumn(",
+                "        Combined, \"IsFuel\",",
+                "        each [product_type] <> null and Text.StartsWith([product_type], \"GASOLINE\"),",
+                "        type logical",
+                "    )",
+                "in",
+                "    AddFuel"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Store",
+        "lineageTag": "b7af1bea-6e3a-40ff-ac6a-282a452105a0",
+        "columns": [
+          {
+            "name": "store_id",
+            "dataType": "string",
+            "sourceColumn": "store_id",
+            "lineageTag": "6c6d5cdd-438f-4b02-a6b4-4d303aab357f",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "store_no",
+            "dataType": "int64",
+            "sourceColumn": "store_no",
+            "lineageTag": "daa23f25-e980-4458-82c3-3541071f7392",
+            "formatString": "0",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "store_label",
+            "dataType": "string",
+            "sourceColumn": "store_label",
+            "lineageTag": "8660810d-7eea-4584-b6f4-3144ac9f2ecb",
+            "sortByColumn": "store_no",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Store",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "// Query: Dim_Store   (Enable load: on). 457 stores. The extract has no store attributes (no region, format or size), only the id,",
+                "// so store comparisons are by store, not by region. In the model: sort store_label by store_no.",
+                "let",
+                "    Source = Table.Distinct(Table.SelectColumns(Transactions_Raw, {\"store_id\"})),",
+                "    AddNo = Table.AddColumn(Source, \"store_no\", each Number.From([store_id]), Int64.Type),",
+                "    AddLabel = Table.AddColumn(AddNo, \"store_label\", each \"Store \" & [store_id], type text),",
+                "    Sorted = Table.Sort(AddLabel, {{\"store_no\", Order.Ascending}})",
+                "in",
+                "    Sorted"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Date",
+        "lineageTag": "b2b54588-3e5e-4530-885f-f72c24c5507a",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "lineageTag": "d0fab9e2-6a52-4177-a7e9-bf6b29d29472",
+            "formatString": "Short Date",
+            "isKey": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "lineageTag": "92e0f4d3-7239-4fb4-ae5e-a61d9b070495",
+            "formatString": "0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "MonthNo",
+            "dataType": "int64",
+            "sourceColumn": "MonthNo",
+            "lineageTag": "982cb51d-0213-4ab2-bf4d-fc1b6b6a7eaa",
+            "formatString": "0",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month",
+            "lineageTag": "0a7e9278-59eb-4570-a720-10114088733f",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "WeekNo",
+            "dataType": "int64",
+            "sourceColumn": "WeekNo",
+            "lineageTag": "8177bbca-c1f8-43f9-85c4-a623c7a00424",
+            "formatString": "0",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "WeekStart",
+            "dataType": "dateTime",
+            "sourceColumn": "WeekStart",
+            "lineageTag": "d2795541-bfef-4cec-bdc8-d4c0a3b61668",
+            "formatString": "Short Date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "WeekLabel",
+            "dataType": "string",
+            "sourceColumn": "WeekLabel",
+            "lineageTag": "5b004071-c36b-460e-9ea0-f2e12a2c1a93",
+            "sortByColumn": "WeekNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DayNo",
+            "dataType": "int64",
+            "sourceColumn": "DayNo",
+            "lineageTag": "2733401c-7247-4bb5-81b0-0d64030b4b97",
+            "formatString": "0",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "DayName",
+            "dataType": "string",
+            "sourceColumn": "DayName",
+            "lineageTag": "aeb6e13f-2602-4e1f-8d46-c1cb6febbde3",
+            "sortByColumn": "DayNo",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsWeekend",
+            "dataType": "boolean",
+            "sourceColumn": "IsWeekend",
+            "lineageTag": "bb5176cf-13ec-487b-bef1-67d4a644c598",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsPartialWeek",
+            "dataType": "boolean",
+            "sourceColumn": "IsPartialWeek",
+            "lineageTag": "2c0daaa1-f583-4055-9e9e-ae8abcd83f8f",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsClosed",
+            "dataType": "boolean",
+            "sourceColumn": "IsClosed",
+            "lineageTag": "4b52c583-6ff5-4816-9954-0c598ce5a1bb",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "// Query: Dim_Date   (Enable load: on; mark as date table on [Date]). One row per calendar day, 365 rows.",
+                "// Weeks reproduce the source: Monday-start, and week 1 is Sunday 1 January alone (rule DQ08 shows zero disagreements).",
+                "// IsPartialWeek is true for week 1 only (its other six days belong to the previous year): week-on-week and rolling measures skip it.",
+                "let",
+                "    Days = Duration.Days(Param_EndDate - Param_StartDate) + 1,",
+                "    Dates = List.Dates(Param_StartDate, Days, #duration(1, 0, 0, 0)),",
+                "    AsTable = Table.TransformColumnTypes(Table.FromList(Dates, Splitter.SplitByNothing(), {\"Date\"}), {{\"Date\", type date}}),",
+                "    AddYear = Table.AddColumn(AsTable, \"Year\", each Date.Year([Date]), Int64.Type),",
+                "    AddMonthNo = Table.AddColumn(AddYear, \"MonthNo\", each Date.Month([Date]), Int64.Type),",
+                "    AddMonth = Table.AddColumn(AddMonthNo, \"Month\", each Date.ToText([Date], \"MMM\", \"en-GB\"), type text),",
+                "    AddWeekStartRaw = Table.AddColumn(AddMonth, \"WeekMonday\", each Date.StartOfWeek([Date], Day.Monday), type date),",
+                "    AddWeekNo = Table.AddColumn(AddWeekStartRaw, \"WeekNo\",",
+                "        each Number.IntegerDivide(Duration.Days([WeekMonday] - #date(2016, 12, 26)), 7) + 1, Int64.Type),",
+                "    AddWeekStart = Table.AddColumn(AddWeekNo, \"WeekStart\", each List.Max({[WeekMonday], Param_StartDate}), type date),",
+                "    AddWeekLabel = Table.AddColumn(AddWeekStart, \"WeekLabel\", each \"W\" & Text.PadStart(Text.From([WeekNo]), 2, \"0\"), type text),",
+                "    AddDayNo = Table.AddColumn(AddWeekLabel, \"DayNo\", each Date.DayOfWeek([Date], Day.Monday) + 1, Int64.Type),",
+                "    AddDayName = Table.AddColumn(AddDayNo, \"DayName\", each Date.ToText([Date], \"ddd\", \"en-GB\"), type text),",
+                "    AddWeekend = Table.AddColumn(AddDayName, \"IsWeekend\", each [DayNo] >= 6, type logical),",
+                "    AddPartial = Table.AddColumn(AddWeekend, \"IsPartialWeek\", each [WeekMonday] < Param_StartDate, type logical),",
+                "    AddClosed = Table.AddColumn(AddPartial, \"IsClosed\", each List.Contains(Ref_ClosedDates[Date], [Date]), type logical),",
+                "    Final = Table.RemoveColumns(AddClosed, {\"WeekMonday\"})",
+                "in",
+                "    Final"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "dataCategory": "Time"
+      },
+      {
+        "name": "Recon_Control",
+        "lineageTag": "b038103f-548d-400d-b9fe-d2ba79620e19",
+        "columns": [
+          {
+            "name": "source",
+            "dataType": "string",
+            "sourceColumn": "source",
+            "lineageTag": "a8ccbfd6-f1e2-4a50-83a7-6db6e5ccda85",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "expected_rows",
+            "dataType": "int64",
+            "sourceColumn": "expected_rows",
+            "lineageTag": "b08e81fb-5056-4d7a-9598-600e51efffc4",
+            "formatString": "#,0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_sales_value",
+            "dataType": "decimal",
+            "sourceColumn": "expected_sales_value",
+            "lineageTag": "94ba404f-780f-4e9e-953d-c02ef2e1bf5e",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_retail_disc",
+            "dataType": "decimal",
+            "sourceColumn": "expected_retail_disc",
+            "lineageTag": "d6391f6e-05ef-47da-9535-fdc8eeaa21c7",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_coupon_disc",
+            "dataType": "decimal",
+            "sourceColumn": "expected_coupon_disc",
+            "lineageTag": "3ffddc4f-005a-4602-92f3-7ff7d6727c67",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_coupon_match_disc",
+            "dataType": "decimal",
+            "sourceColumn": "expected_coupon_match_disc",
+            "lineageTag": "b14d645c-c35c-445c-a798-1c5f800ec641",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_baskets",
+            "dataType": "int64",
+            "sourceColumn": "expected_baskets",
+            "lineageTag": "a98af127-2566-43ec-a830-7c3cfe321fa7",
+            "formatString": "#,0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_households",
+            "dataType": "int64",
+            "sourceColumn": "expected_households",
+            "lineageTag": "a6c37d3b-b928-4eb8-b001-97fc1bb2000e",
+            "formatString": "#,0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_stores",
+            "dataType": "int64",
+            "sourceColumn": "expected_stores",
+            "lineageTag": "454b4ee2-9c0c-48a3-b93a-f48514eec964",
+            "formatString": "#,0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_products_sold",
+            "dataType": "int64",
+            "sourceColumn": "expected_products_sold",
+            "lineageTag": "2a019325-c2bc-46f0-8eea-1ed13d754ccb",
+            "formatString": "#,0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "expected_product_rows",
+            "dataType": "int64",
+            "sourceColumn": "expected_product_rows",
+            "lineageTag": "48c7fbe9-4791-45ac-b478-470204137796",
+            "formatString": "#,0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "min_date",
+            "dataType": "dateTime",
+            "sourceColumn": "min_date",
+            "lineageTag": "2d27ddef-e8c1-4f05-9d91-2dd2057eb2fc",
+            "formatString": "Short Date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "max_date",
+            "dataType": "dateTime",
+            "sourceColumn": "max_date",
+            "lineageTag": "a53278db-d6f2-4387-954b-3eefc2380f49",
+            "formatString": "Short Date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Recon_Control",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "// Query: Recon_Control   (Enable load: on). Control totals written by scripts/export_raw.R from the source object,",
+                "// before any Power BI step. The Reconciliation page compares them with what the model loaded.",
+                "let",
+                "    Source = Csv.Document(",
+                "        File.Contents(Param_DataFolder & \"control_totals.csv\"),",
+                "        [Delimiter = \",\", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]",
+                "    ),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(",
+                "        Promoted,",
+                "        {{\"source\", type text}, {\"expected_rows\", Int64.Type}, {\"expected_sales_value\", Currency.Type},",
+                "         {\"expected_retail_disc\", Currency.Type}, {\"expected_coupon_disc\", Currency.Type},",
+                "         {\"expected_coupon_match_disc\", Currency.Type}, {\"expected_baskets\", Int64.Type},",
+                "         {\"expected_households\", Int64.Type}, {\"expected_stores\", Int64.Type}, {\"expected_products_sold\", Int64.Type},",
+                "         {\"expected_product_rows\", Int64.Type}, {\"min_date\", type date}, {\"max_date\", type date}},",
+                "        \"en-US\"",
+                "    )",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "DQ_Rules",
+        "lineageTag": "996c83ec-3fde-414a-9713-c4fb6c483f94",
+        "columns": [
+          {
+            "name": "RuleID",
+            "dataType": "string",
+            "sourceColumn": "RuleID",
+            "lineageTag": "27d91981-0373-457e-9180-e98ef8d2ac75",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Check",
+            "dataType": "string",
+            "sourceColumn": "Check",
+            "lineageTag": "bc15c95b-2c8e-4171-829b-9b2dcd41df6c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Treatment",
+            "dataType": "string",
+            "sourceColumn": "Treatment",
+            "lineageTag": "4c11f490-1245-4f22-8a73-da3b642c35b1",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ExpectedCount",
+            "dataType": "int64",
+            "sourceColumn": "ExpectedCount",
+            "lineageTag": "a4419f71-ea12-4aa6-8e49-99878fadcfc2",
+            "formatString": "#,0",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "ExpectedSales",
+            "dataType": "decimal",
+            "sourceColumn": "ExpectedSales",
+            "lineageTag": "2748c559-96b8-4ff8-a5ff-58682228dfc4",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DQ_Rules",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "// Query: DQ_Rules  (generated by scripts/reference.py: documentation table shown on the Data Quality page)",
+                "let",
+                "    Source = #table(",
+                "        type table [RuleID = text, Check = text, Treatment = text, ExpectedCount = Int64.Type, ExpectedSales = Currency.Type],",
+                "        {",
+                "        {\"DQ01\", \"Lines with quantity = 0\", \"Kept: the value counts in Sales, the line adds no units; flagged 'Zero quantity'\", 8869, 12.52},",
+                "        {\"DQ02\", \"Free items: quantity > 0 and sales_value = 0\", \"Kept: genuine promotional give-aways; flagged 'Free item'\", 2406, 0.0},",
+                "        {\"DQ03\", \"Petrol lines: 'quantity' is not a unit count (up to 89,638 on one line)\", \"Kept in Sales and Fuel Sales; excluded from Units, Items per Basket and Avg Selling Price\", 14697, 384044.07},",
+                "        {\"DQ04\", \"Product on a sales line is missing from the product file\", \"Kept; mapped to department UNKNOWN so no sales fall out of a department chart\", 4836, 172.57},",
+                "        {\"DQ05\", \"Negative values (returns, voids)\", \"None found; the model does not handle returns\", 0, 0.0},",
+                "        {\"DQ06\", \"Exact duplicate lines\", \"None found; no de-duplication step\", 0, 0.0},",
+                "        {\"DQ07\", \"Calendar days with no transactions\", \"25 December only; flagged IsClosed; per-day measures divide by trading days\", 1, 0.0},",
+                "        {\"DQ08\", \"Source week differs from the date table's week\", \"None; the date table reproduces the source's Monday-start weeks (week 1 = 1 January only)\", 0, 0.0}",
+                "        }",
+                "    )",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "_Measures",
+        "lineageTag": "319f1d5d-7d8f-474e-b7e9-5af905343349",
+        "columns": [
+          {
+            "name": "Column1",
+            "dataType": "string",
+            "sourceColumn": "Column1",
+            "lineageTag": "7a7a6240-55dd-4f96-a3ed-7eec737c42d5",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "// Holds the measures only (Home > Enter data equivalent)",
+                "#table(type table [Column1 = text], {})"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales",
+            "expression": [
+              "SUM ( Fact_Sales[sales_value] )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "80cf76d5-5e0b-49e8-8846-9115a3f0a9ca",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Gross Sales",
+            "expression": [
+              "SUM ( Fact_Sales[shelf_value] )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "5894cb61-496c-4c54-8c1e-9b6792a90b3e",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Retail Discount",
+            "expression": [
+              "SUM ( Fact_Sales[retail_disc] )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "b28f2977-90c9-4130-a953-609dd3b3e010",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Coupon Match Discount",
+            "expression": [
+              "SUM ( Fact_Sales[coupon_match_disc] )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "8feee408-874a-443b-836d-11ad35a6c606",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Total Discount",
+            "expression": [
+              "[Retail Discount] + [Coupon Match Discount]"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "8b70fb63-3634-4d91-bbae-157e864b3307",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Discount %",
+            "expression": [
+              "DIVIDE ( [Total Discount], [Gross Sales] )"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "242ab609-6174-4f21-98ed-b5e6432c44c5"
+          },
+          {
+            "name": "Manufacturer Coupon Value",
+            "expression": [
+              "SUM ( Fact_Sales[coupon_disc] )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "6b5f242b-7c95-42e3-9bd0-b9d2c66d832a",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Baskets",
+            "expression": [
+              "DISTINCTCOUNT ( Fact_Sales[basket_id] )"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "5f02f868-0b3f-46bf-b5cb-cac57c25030f"
+          },
+          {
+            "name": "Households",
+            "expression": [
+              "DISTINCTCOUNT ( Fact_Sales[household_id] )"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "e1362d63-bf30-4bf8-a761-c275c7532ffb"
+          },
+          {
+            "name": "Units",
+            "expression": [
+              "CALCULATE ( SUM ( Fact_Sales[quantity] ), Dim_Product[IsFuel] = FALSE () )"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "b14a333c-7018-4415-9e25-9d41f92f5783"
+          },
+          {
+            "name": "Sales ex Fuel",
+            "expression": [
+              "CALCULATE ( [Sales], Dim_Product[IsFuel] = FALSE () )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "d8e04ca1-f1c1-4810-a25f-329170b33454",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Fuel Sales",
+            "expression": [
+              "CALCULATE ( [Sales], Dim_Product[IsFuel] = TRUE () )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "87283d78-bc66-4b0f-956c-4d7db6d9a6c6",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Avg Basket Value",
+            "expression": [
+              "DIVIDE ( [Sales], [Baskets] )"
+            ],
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "f3f61847-c717-47e2-9d24-06775877ac59",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Items per Basket",
+            "expression": [
+              "DIVIDE ( [Units], CALCULATE ( [Baskets], Dim_Product[IsFuel] = FALSE () ) )"
+            ],
+            "formatString": "#,0.0",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "c0f1e1b3-52cd-477d-83c8-bcb3143b4b66"
+          },
+          {
+            "name": "Avg Selling Price",
+            "expression": [
+              "DIVIDE ( [Sales ex Fuel], [Units] )"
+            ],
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "0cd609bf-dbfb-406d-9ebb-4944c4137384",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Private Label Share",
+            "expression": [
+              "DIVIDE ( CALCULATE ( [Sales ex Fuel], Dim_Product[brand] = \"Private\" ), [Sales ex Fuel] )"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "2 Baskets and units",
+            "lineageTag": "df0ecf3a-baef-4f00-8b73-4eefcdb6cbaa"
+          },
+          {
+            "name": "Share of Total Sales",
+            "expression": [
+              "DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( Dim_Product ) ) )"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "3 Mix and ranking",
+            "lineageTag": "a0ea121d-8b12-4294-b926-64103fdb0841"
+          },
+          {
+            "name": "Share of Department Sales",
+            "expression": [
+              "DIVIDE (",
+              "    [Sales],",
+              "    CALCULATE ( [Sales], REMOVEFILTERS ( Dim_Product[product_category] ), REMOVEFILTERS ( Dim_Product[product_type] ) )",
+              ")"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "3 Mix and ranking",
+            "lineageTag": "33737ce1-b394-49aa-99af-5d0505bde622"
+          },
+          {
+            "name": "Store Rank",
+            "expression": [
+              "IF ( HASONEVALUE ( Dim_Store[store_id] ), RANKX ( ALLSELECTED ( Dim_Store ), [Sales], , DESC, DENSE ) )"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "3 Mix and ranking",
+            "lineageTag": "26fb5237-b71c-41d6-9535-b1035f623511",
+            "description": "Store measures rank and compare whole stores: ALLSELECTED over a sort-by column (store_label sorts by store_no) ranked every row 1 in Power BI Desktop, so these use the whole Dim_Store table. Blank on totals."
+          },
+          {
+            "name": "Sales vs Store Avg %",
+            "expression": [
+              "IF (",
+              "    HASONEVALUE ( Dim_Store[store_id] ),",
+              "    DIVIDE ( [Sales], CALCULATE ( AVERAGEX ( VALUES ( Dim_Store[store_id] ), [Sales] ), REMOVEFILTERS ( Dim_Store ) ) ) - 1",
+              ")"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "3 Mix and ranking",
+            "lineageTag": "87bd39b2-067b-4bf1-b6e0-8f0f1d46d284"
+          },
+          {
+            "name": "Discount % ex Fuel",
+            "expression": [
+              "CALCULATE ( [Discount %], Dim_Product[IsFuel] = FALSE () )"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "1 Sales and discounts",
+            "lineageTag": "1f02501b-d4ee-4bd5-9937-265861a201e4"
+          },
+          {
+            "name": "Discount % (depts over $10k)",
+            "expression": [
+              "IF ( [Sales ex Fuel] >= 10000, [Discount % ex Fuel] )"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "7 Report helpers",
+            "lineageTag": "897abce8-6f2c-4340-9a7f-800d02db6732"
+          },
+          {
+            "name": "Private Label Share (depts over $10k)",
+            "expression": [
+              "IF ( [Sales ex Fuel] >= 10000, [Private Label Share] )"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "7 Report helpers",
+            "lineageTag": "e9b68cd1-6207-4066-b68b-446fc33849b7"
+          },
+          {
+            "name": "Retail Discount (depts over $10k)",
+            "expression": [
+              "IF ( [Sales ex Fuel] >= 10000, CALCULATE ( [Retail Discount], Dim_Product[IsFuel] = FALSE () ) )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "7 Report helpers",
+            "lineageTag": "be4fcc01-505e-4012-8bd1-7fe32cac080d",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Coupon Match Discount (depts over $10k)",
+            "expression": [
+              "IF ( [Sales ex Fuel] >= 10000, CALCULATE ( [Coupon Match Discount], Dim_Product[IsFuel] = FALSE () ) )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "7 Report helpers",
+            "lineageTag": "70afbb67-30ee-4d6a-b339-59d4ad88a540",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Sales per Trading Day",
+            "expression": [
+              "DIVIDE ( [Sales], CALCULATE ( COUNTROWS ( Dim_Date ), Dim_Date[IsClosed] = FALSE () ) )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "4 Time",
+            "lineageTag": "6fb12a39-e736-4b0e-a473-4bc9c1cf6adc",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Sales PW",
+            "expression": [
+              "VAR w = SELECTEDVALUE ( Dim_Date[WeekNo] )",
+              "VAR prevIsFullWeek =",
+              "    CALCULATE ( COUNTROWS ( Dim_Date ), ALL ( Dim_Date ), Dim_Date[WeekNo] = w - 1, Dim_Date[IsPartialWeek] = FALSE () )",
+              "RETURN",
+              "    IF ( ISBLANK ( w ) || ISBLANK ( prevIsFullWeek ), BLANK (), CALCULATE ( [Sales], ALL ( Dim_Date ), Dim_Date[WeekNo] = w - 1 ) )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "4 Time",
+            "lineageTag": "1c97385a-c39e-4d21-b06d-906be580cb13",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Sales WoW %",
+            "expression": [
+              "IF ( ISBLANK ( [Sales PW] ), BLANK (), DIVIDE ( [Sales] - [Sales PW], [Sales PW] ) )"
+            ],
+            "formatString": "0.0%;-0.0%;0.0%",
+            "displayFolder": "4 Time",
+            "lineageTag": "e32055af-e3f0-4ba1-9847-86ae0a522842"
+          },
+          {
+            "name": "Rolling 4 Week Sales",
+            "expression": [
+              "VAR w = SELECTEDVALUE ( Dim_Date[WeekNo] )",
+              "VAR window =",
+              "    FILTER ( ALL ( Dim_Date ), Dim_Date[WeekNo] > w - 4 && Dim_Date[WeekNo] <= w && NOT ( Dim_Date[IsPartialWeek] ) )",
+              "VAR fullWeeks = CALCULATE ( DISTINCTCOUNT ( Dim_Date[WeekNo] ), window )",
+              "RETURN",
+              "    IF ( ISBLANK ( w ) || fullWeeks < 4, BLANK (), CALCULATE ( [Sales], window ) )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "displayFolder": "4 Time",
+            "lineageTag": "22a5cc5c-d825-40eb-a6eb-bc3a3bce4a1d",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Zero-Quantity Lines",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( Fact_Sales ), Fact_Sales[line_flag] = \"Zero quantity\" ) + 0"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "55563526-38b9-477e-a228-bd3d9e49a0ce"
+          },
+          {
+            "name": "Zero-Quantity Sales",
+            "expression": [
+              "CALCULATE ( [Sales], Fact_Sales[line_flag] = \"Zero quantity\" )"
+            ],
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "d2aec3ef-3247-4a48-a7a6-ed284f043704",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Free-Item Lines",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( Fact_Sales ), Fact_Sales[line_flag] = \"Free item\" ) + 0"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "d288ebdd-4492-4992-b4f8-17dd406dd405"
+          },
+          {
+            "name": "Fuel Lines",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( Fact_Sales ), Dim_Product[IsFuel] = TRUE () ) + 0"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "ca7cdf1a-3b59-4851-93ef-8c00b1f83067"
+          },
+          {
+            "name": "Unknown-Product Lines",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( Fact_Sales ), Dim_Product[department] = \"UNKNOWN\" ) + 0"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "2eea9451-b4b2-4248-be06-917da9236553"
+          },
+          {
+            "name": "Unknown-Product Sales",
+            "expression": [
+              "CALCULATE ( [Sales], Dim_Product[department] = \"UNKNOWN\" )"
+            ],
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "60d2f872-a73e-4104-b439-f025434d2210",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Source Week Mismatch Lines",
+            "expression": [
+              "COUNTROWS ( FILTER ( Fact_Sales, Fact_Sales[source_week] <> RELATED ( Dim_Date[WeekNo] ) ) ) + 0"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "770773c6-44fd-4504-adc6-b6401e2a49c4",
+            "description": "Heavy (scans every line): keep these three on the Data Quality page only"
+          },
+          {
+            "name": "Negative-Value Lines",
+            "expression": [
+              "COUNTROWS (",
+              "    FILTER (",
+              "        Fact_Sales,",
+              "        Fact_Sales[sales_value] < 0 || Fact_Sales[retail_disc] < 0",
+              "            || Fact_Sales[coupon_disc] < 0 || Fact_Sales[coupon_match_disc] < 0",
+              "    )",
+              ") + 0"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "f07409f5-6413-4702-b66d-3c28d49f9f24"
+          },
+          {
+            "name": "Exact Duplicate Lines",
+            "expression": [
+              "COUNTROWS ( Fact_Sales ) - COUNTROWS ( DISTINCT ( Fact_Sales ) ) + 0"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "5 Data quality",
+            "lineageTag": "b12c798b-7db2-4b48-952e-867337065887",
+            "description": "DISTINCT of the whole table removes rows identical in every column, so the difference is the exact duplicates"
+          },
+          {
+            "name": "Loaded Rows (all)",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( Fact_Sales ), REMOVEFILTERS () )"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "6 Reconciliation",
+            "lineageTag": "99266664-4e9d-4113-8549-f90e3b85d31b"
+          },
+          {
+            "name": "Sales (all)",
+            "expression": [
+              "CALCULATE ( SUM ( Fact_Sales[sales_value] ), REMOVEFILTERS () )"
+            ],
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "displayFolder": "6 Reconciliation",
+            "lineageTag": "9c5973af-c4b2-48f9-9bd9-f5bdbd9a7b4b",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Control Rows",
+            "expression": [
+              "SUM ( Recon_Control[expected_rows] )"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "6 Reconciliation",
+            "lineageTag": "cd545ffc-7513-41d2-8f21-963fbcc54aff"
+          },
+          {
+            "name": "Control Sales",
+            "expression": [
+              "SUM ( Recon_Control[expected_sales_value] )"
+            ],
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "displayFolder": "6 Reconciliation",
+            "lineageTag": "418f99c9-4cb9-4d41-930f-328c670f0ee7",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Row Difference",
+            "expression": [
+              "[Loaded Rows (all)] - [Control Rows]"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "6 Reconciliation",
+            "lineageTag": "91685008-fee0-4e84-a468-17dc7f91e0df"
+          },
+          {
+            "name": "Sales Difference",
+            "expression": [
+              "ROUND ( [Sales (all)] - [Control Sales], 2 )"
+            ],
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "displayFolder": "6 Reconciliation",
+            "lineageTag": "d2aeffc1-8f75-448d-b677-c0f21ef6a50e",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ]
+          },
+          {
+            "name": "Actual (DQ rule)",
+            "expression": [
+              "SWITCH (",
+              "    SELECTEDVALUE ( DQ_Rules[RuleID] ),",
+              "    \"DQ01\", [Zero-Quantity Lines],",
+              "    \"DQ02\", [Free-Item Lines],",
+              "    \"DQ03\", [Fuel Lines],",
+              "    \"DQ04\", [Unknown-Product Lines],",
+              "    \"DQ05\", [Negative-Value Lines],",
+              "    \"DQ06\", [Exact Duplicate Lines],",
+              "    \"DQ07\", CALCULATE ( COUNTROWS ( Dim_Date ), Dim_Date[IsClosed] = TRUE () ),",
+              "    \"DQ08\", [Source Week Mismatch Lines],",
+              "    BLANK ()",
+              ")"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "6 Reconciliation",
+            "lineageTag": "b24ee36c-7871-4605-aa00-1c499975c2c1"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "f08928a0-6872-4e78-85c5-728f0bb7d61f",
+        "fromTable": "Fact_Sales",
+        "fromColumn": "product_id",
+        "toTable": "Dim_Product",
+        "toColumn": "product_id"
+      },
+      {
+        "name": "d4ae0202-a482-4f25-81d6-25e159e280da",
+        "fromTable": "Fact_Sales",
+        "fromColumn": "store_id",
+        "toTable": "Dim_Store",
+        "toColumn": "store_id"
+      },
+      {
+        "name": "ad8c7f67-bce1-4b6d-8b75-57689f38d8c2",
+        "fromTable": "Fact_Sales",
+        "fromColumn": "Date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date"
+      }
+    ],
+    "expressions": [
+      {
+        "name": "Param_DataFolder",
+        "kind": "m",
+        "lineageTag": "d06aaf76-d5f7-4dd6-8477-dc805bfc2182",
+        "expression": [
+          "\"C:\\storetrade\\data\\\" meta [IsParameterQuery = true, Type = \"Text\", IsParameterQueryRequired = true]"
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ]
+      },
+      {
+        "name": "Param_StartDate",
+        "kind": "m",
+        "lineageTag": "6a98b1e8-4bc8-464c-b565-dbfc58a1d2c3",
+        "expression": [
+          "#date(2017, 1, 1) meta [IsParameterQuery = true, Type = \"Date\", IsParameterQueryRequired = true]"
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Date"
+          }
+        ]
+      },
+      {
+        "name": "Param_EndDate",
+        "kind": "m",
+        "lineageTag": "872d4312-b4fa-45f3-af8f-4595fd5a01c4",
+        "expression": [
+          "#date(2017, 12, 31) meta [IsParameterQuery = true, Type = \"Date\", IsParameterQueryRequired = true]"
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Date"
+          }
+        ]
+      },
+      {
+        "name": "Ref_ClosedDates",
+        "kind": "m",
+        "lineageTag": "8d052145-f16a-42ec-af9d-c7dcde742b11",
+        "expression": [
+          "// Query: Ref_ClosedDates   (Enable load: off)",
+          "// Calendar days with no transactions in the extract, found by comparing every calendar day with the dates in the data (rule DQ07).",
+          "// Christmas Day: the stores were closed, so a zero is not a trading result. Add a row if a refresh brings new data.",
+          "let",
+          "    Source = #table(",
+          "        type table [Date = date, Reason = text],",
+          "        {",
+          "            {#date(2017, 12, 25), \"Christmas Day: no transactions in the extract\"}",
+          "        }",
+          "    )",
+          "in",
+          "    Source"
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Transactions_Raw",
+        "kind": "m",
+        "lineageTag": "c9402d8c-9d8c-4124-b14c-9a6a7eb9339c",
+        "expression": [
+          "// Query: Transactions_Raw   (Enable load: off)",
+          "// Step 1 of the data flow: read the CSV as exported, set types. No rows are removed or changed here.",
+          "// Keys are text on purpose (store_id \"330\" is a label, not a number; text keys also match the product file exactly).",
+          "let",
+          "    Source = Csv.Document(",
+          "        File.Contents(Param_DataFolder & \"transactions.csv\"),",
+          "        [Delimiter = \",\", Columns = 11, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]",
+          "    ),",
+          "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+          "    Typed = Table.TransformColumnTypes(",
+          "        Promoted,",
+          "        {",
+          "            {\"household_id\", type text}, {\"store_id\", type text}, {\"basket_id\", type text}, {\"product_id\", type text},",
+          "            {\"quantity\", type number},",
+          "            {\"sales_value\", Currency.Type}, {\"retail_disc\", Currency.Type},",
+          "            {\"coupon_disc\", Currency.Type}, {\"coupon_match_disc\", Currency.Type},",
+          "            {\"week\", Int64.Type}, {\"transaction_timestamp\", type datetime}",
+          "        },",
+          "        \"en-US\"",
+          "    )",
+          "in",
+          "    Typed"
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Products_Raw",
+        "kind": "m",
+        "lineageTag": "6181d1be-b596-4bcd-8f9c-9a9208dfa775",
+        "expression": [
+          "// Query: Products_Raw   (Enable load: off)",
+          "// Staging query: reads products.csv and sets types, nothing else. Kept separate from Dim_Product so that no query both",
+          "// reads a file and references another query (that combination triggers Power Query's Formula.Firewall error).",
+          "let",
+          "    Source = Csv.Document(",
+          "        File.Contents(Param_DataFolder & \"products.csv\"),",
+          "        [Delimiter = \",\", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]",
+          "    ),",
+          "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+          "    Typed = Table.TransformColumnTypes(",
+          "        Promoted,",
+          "        {{\"product_id\", type text}, {\"manufacturer_id\", type text}, {\"department\", type text}, {\"brand\", type text},",
+          "         {\"product_category\", type text}, {\"product_type\", type text}, {\"package_size\", type text}},",
+          "        \"en-US\"",
+          "    )",
+          "in",
+          "    Typed"
+        ],
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Param_DataFolder\", \"Param_StartDate\", \"Param_EndDate\", \"Ref_ClosedDates\", \"Transactions_Raw\", \"Products_Raw\", \"Fact_Sales\", \"Dim_Product\", \"Dim_Store\", \"Dim_Date\", \"Recon_Control\", \"DQ_Rules\", \"_Measures\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.149.178.0 (25.11)"
+      }
+    ]
+  }
+}

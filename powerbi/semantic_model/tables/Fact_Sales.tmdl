@@ -1,0 +1,169 @@
+table Fact_Sales
+	lineageTag: 8cf40941-694c-40a5-8d4c-a6e855582c48
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: Short Date
+		lineageTag: 0e404d0e-0e7b-428f-89b7-14aab31d6f56
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column transaction_timestamp
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: e5a24428-db7a-4c94-b284-08c47f13c54c
+		summarizeBy: none
+		sourceColumn: transaction_timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column basket_id
+		dataType: string
+		isHidden
+		lineageTag: 8c217769-94c0-490d-af81-fe4c07a41cd6
+		summarizeBy: none
+		sourceColumn: basket_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column household_id
+		dataType: string
+		isHidden
+		lineageTag: 8e5f0202-d2c0-4852-9c8b-b2172b6d9554
+		summarizeBy: none
+		sourceColumn: household_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: string
+		isHidden
+		lineageTag: 09bb4689-94e7-4ce8-8d9a-a36ffce11b52
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		isHidden
+		lineageTag: 25b79221-2f67-4ef0-9762-a41c40367621
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: double
+		isHidden
+		formatString: #,0
+		lineageTag: 92a99f8c-cbac-4388-aa5b-ccb49500d2e4
+		summarizeBy: none
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = User
+
+	column sales_value
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: 4948cd11-6e80-4ae6-bb62-5f74f6a11cbd
+		summarizeBy: none
+		sourceColumn: sales_value
+
+		annotation SummarizationSetBy = User
+
+	column retail_disc
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: b8a8b71c-f0be-4ef3-bb7c-3d9818c96234
+		summarizeBy: none
+		sourceColumn: retail_disc
+
+		annotation SummarizationSetBy = User
+
+	column coupon_match_disc
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: 16cf431e-216f-4f25-8cb5-1692724f457f
+		summarizeBy: none
+		sourceColumn: coupon_match_disc
+
+		annotation SummarizationSetBy = User
+
+	column coupon_disc
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: bf3ae87e-7579-4d9c-9902-bc49be4de4ed
+		summarizeBy: none
+		sourceColumn: coupon_disc
+
+		annotation SummarizationSetBy = User
+
+	column shelf_value
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: d1df7c96-1d8e-49f4-a1e3-d58243eaac1d
+		summarizeBy: none
+		sourceColumn: shelf_value
+
+		annotation SummarizationSetBy = User
+
+	column line_flag
+		dataType: string
+		lineageTag: 835a7c82-e20f-4b1a-8b87-19cb45bca589
+		summarizeBy: none
+		sourceColumn: line_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_week
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e470e674-19df-4b4a-a3dc-030e7b737d05
+		summarizeBy: none
+		sourceColumn: source_week
+
+		annotation SummarizationSetBy = User
+
+	partition Fact_Sales = m
+		mode: import
+		source =
+				// Query: Fact_Sales   (Enable load: on). One row per transaction line: 1,469,307 rows, none removed (reconciled to control_totals.csv).
+				// Adds: Date (store-local date), shelf_value (value before discounts), line_flag (rules DQ01 and DQ02).
+				// Rule DQ03 (petrol quantity) and DQ04 (unknown product) are handled in Dim_Product, not by deleting lines.
+				let
+				    Source = Transactions_Raw,
+				    AddDate = Table.AddColumn(Source, "Date", each DateTime.Date([transaction_timestamp]), type date),
+				    // shelf_value = what the lines would have cost with no retail or coupon-match discount. Assumption, see docs/BUSINESS_RULES.md:
+				    // sales_value is net of retail_disc and coupon_match_disc. coupon_disc is manufacturer-funded and is not added back.
+				    AddShelf = Table.AddColumn(AddDate, "shelf_value", each [sales_value] + [retail_disc] + [coupon_match_disc], Currency.Type),
+				    AddFlag = Table.AddColumn(
+				        AddShelf, "line_flag",
+				        each if [quantity] = 0 then "Zero quantity" else if [sales_value] = 0 then "Free item" else "Sale",
+				        type text
+				    ),
+				    Renamed = Table.RenameColumns(AddFlag, {{"week", "source_week"}}),
+				    Ordered = Table.ReorderColumns(
+				        Renamed,
+				        {"Date", "transaction_timestamp", "basket_id", "household_id", "store_id", "product_id", "quantity",
+				         "sales_value", "retail_disc", "coupon_match_disc", "coupon_disc", "shelf_value", "line_flag", "source_week"}
+				    )
+				in
+				    Ordered
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

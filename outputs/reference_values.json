@@ -1,0 +1,194 @@
+{
+  "Loaded rows": {
+    "expected": 1469307,
+    "kind": "count"
+  },
+  "Sales": {
+    "expected": 4596039.58,
+    "kind": "money"
+  },
+  "Gross Sales": {
+    "expected": 5392232.87,
+    "kind": "money"
+  },
+  "Retail Discount": {
+    "expected": 791650.64,
+    "kind": "money"
+  },
+  "Coupon Match Discount": {
+    "expected": 4542.65,
+    "kind": "money"
+  },
+  "Total Discount": {
+    "expected": 796193.29,
+    "kind": "money"
+  },
+  "Discount %": {
+    "expected": 0.147656,
+    "kind": "ratio"
+  },
+  "Manufacturer Coupon Value": {
+    "expected": 26359.9,
+    "kind": "money"
+  },
+  "Baskets": {
+    "expected": 155848,
+    "kind": "count"
+  },
+  "Households": {
+    "expected": 2469,
+    "kind": "count"
+  },
+  "Stores": {
+    "expected": 457,
+    "kind": "count"
+  },
+  "Trading days": {
+    "expected": 364,
+    "kind": "count"
+  },
+  "Units (ex fuel)": {
+    "expected": 1902528.0,
+    "kind": "money"
+  },
+  "Sales ex Fuel": {
+    "expected": 4211995.51,
+    "kind": "money"
+  },
+  "Fuel Sales": {
+    "expected": 384044.07,
+    "kind": "money"
+  },
+  "Fuel Lines": {
+    "expected": 14697,
+    "kind": "count"
+  },
+  "Avg Basket Value": {
+    "expected": 29.4905,
+    "kind": "money4"
+  },
+  "Items per Basket": {
+    "expected": 13.422756,
+    "kind": "ratio"
+  },
+  "Avg Selling Price": {
+    "expected": 2.2139,
+    "kind": "money4"
+  },
+  "Private Label Share": {
+    "expected": 0.217124,
+    "kind": "ratio"
+  },
+  "Discount % ex Fuel": {
+    "expected": 0.156924,
+    "kind": "ratio"
+  },
+  "Discount % (depts over $10k) at SEAFOOD-PCKGD": {
+    "expected": 0.251451,
+    "kind": "ratio"
+  },
+  "Private Label Share (depts over $10k) at MISCELLANEOUS": {
+    "expected": 0.64755,
+    "kind": "ratio"
+  },
+  "Sales GROCERY": {
+    "expected": 2316393.89,
+    "kind": "money"
+  },
+  "Share of Total GROCERY": {
+    "expected": 0.503998,
+    "kind": "ratio"
+  },
+  "Sales Store 367": {
+    "expected": 148169.67,
+    "kind": "money"
+  },
+  "Sales week 10": {
+    "expected": 90219.68,
+    "kind": "money"
+  },
+  "Sales PW at week 11": {
+    "expected": 90219.68,
+    "kind": "money"
+  },
+  "Sales WoW % at week 11": {
+    "expected": -0.051986,
+    "kind": "ratio"
+  },
+  "Rolling 4 Week Sales at week 20": {
+    "expected": 353987.84,
+    "kind": "money"
+  },
+  "Zero-Quantity Lines": {
+    "expected": 8869,
+    "kind": "count"
+  },
+  "Free-Item Lines": {
+    "expected": 2406,
+    "kind": "count"
+  },
+  "Unknown-Product Lines": {
+    "expected": 4836,
+    "kind": "count"
+  },
+  "Unknown-Product Sales": {
+    "expected": 172.57,
+    "kind": "money"
+  },
+  "Zero-Quantity Sales": {
+    "expected": 12.52,
+    "kind": "money"
+  },
+  "Source week mismatch lines": {
+    "expected": 0,
+    "kind": "count"
+  },
+  "Negative value lines": {
+    "expected": 0,
+    "kind": "count"
+  },
+  "Exact duplicate lines": {
+    "expected": 0,
+    "kind": "count"
+  },
+  "Orphan product keys": {
+    "expected": 0,
+    "kind": "count"
+  },
+  "Orphan store keys": {
+    "expected": 0,
+    "kind": "count"
+  },
+  "Orphan date keys": {
+    "expected": 0,
+    "kind": "count"
+  },
+  "Dim_Product rows": {
+    "expected": 92348,
+    "kind": "count"
+  },
+  "Dim_Store rows": {
+    "expected": 457,
+    "kind": "count"
+  },
+  "Dim_Date rows": {
+    "expected": 365,
+    "kind": "count"
+  },
+  "Closed days with sales": {
+    "expected": 0,
+    "kind": "count"
+  },
+  "Days with no sales (calendar)": {
+    "expected": 1,
+    "kind": "count"
+  },
+  "_control_agreement": {
+    "rows": true,
+    "sales": true,
+    "baskets": true,
+    "households": true,
+    "stores": true,
+    "product rows": true
+  }
+}

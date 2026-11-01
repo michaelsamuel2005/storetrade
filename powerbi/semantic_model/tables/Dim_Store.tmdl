@@ -1,0 +1,48 @@
+table Dim_Store
+	lineageTag: b7af1bea-6e3a-40ff-ac6a-282a452105a0
+
+	column store_id
+		dataType: string
+		isHidden
+		lineageTag: 6c6d5cdd-438f-4b02-a6b4-4d303aab357f
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_no
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: daa23f25-e980-4458-82c3-3541071f7392
+		summarizeBy: none
+		sourceColumn: store_no
+
+		annotation SummarizationSetBy = User
+
+	column store_label
+		dataType: string
+		lineageTag: 8660810d-7eea-4584-b6f4-3144ac9f2ecb
+		summarizeBy: none
+		sourceColumn: store_label
+		sortByColumn: store_no
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Store = m
+		mode: import
+		source =
+				// Query: Dim_Store   (Enable load: on). 457 stores. The extract has no store attributes (no region, format or size), only the id,
+				// so store comparisons are by store, not by region. In the model: sort store_label by store_no.
+				let
+				    Source = Table.Distinct(Table.SelectColumns(Transactions_Raw, {"store_id"})),
+				    AddNo = Table.AddColumn(Source, "store_no", each Number.From([store_id]), Int64.Type),
+				    AddLabel = Table.AddColumn(AddNo, "store_label", each "Store " & [store_id], type text),
+				    Sorted = Table.Sort(AddLabel, {{"store_no", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

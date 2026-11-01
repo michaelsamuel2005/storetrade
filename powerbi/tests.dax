@@ -1,0 +1,68 @@
+// storetrade: DAX tests. Paste into Power BI Desktop > DAX query view and Run.
+// Expected values come from scripts/reference.py (DuckDB, independent of Power BI). Generated: do not edit by hand.
+// Rolling-window and week-on-week blanks are tested separately at the bottom.
+EVALUATE
+VAR Results =
+  UNION (
+    ROW ( "Check", "Loaded rows", "Expected", 1469307.0, "Actual", CONVERT ( COUNTROWS ( Fact_Sales ), DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Sales", "Expected", 4596039.58, "Actual", CONVERT ( [Sales], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Gross Sales", "Expected", 5392232.87, "Actual", CONVERT ( [Gross Sales], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Retail Discount", "Expected", 791650.64, "Actual", CONVERT ( [Retail Discount], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Coupon Match Discount", "Expected", 4542.65, "Actual", CONVERT ( [Coupon Match Discount], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Total Discount", "Expected", 796193.29, "Actual", CONVERT ( [Total Discount], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Discount %", "Expected", 0.147656, "Actual", CONVERT ( [Discount %], DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Manufacturer Coupon Value", "Expected", 26359.9, "Actual", CONVERT ( [Manufacturer Coupon Value], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Baskets", "Expected", 155848.0, "Actual", CONVERT ( [Baskets], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Households", "Expected", 2469.0, "Actual", CONVERT ( [Households], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Stores", "Expected", 457.0, "Actual", CONVERT ( DISTINCTCOUNT ( Fact_Sales[store_id] ), DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Trading days", "Expected", 364.0, "Actual", CONVERT ( DISTINCTCOUNT ( Fact_Sales[Date] ), DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Units (ex fuel)", "Expected", 1902528.0, "Actual", CONVERT ( [Units], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Sales ex Fuel", "Expected", 4211995.51, "Actual", CONVERT ( [Sales ex Fuel], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Fuel Sales", "Expected", 384044.07, "Actual", CONVERT ( [Fuel Sales], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Fuel Lines", "Expected", 14697.0, "Actual", CONVERT ( [Fuel Lines], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Avg Basket Value", "Expected", 29.4905, "Actual", CONVERT ( [Avg Basket Value], DOUBLE ), "Tolerance", 0.0001 ),
+    ROW ( "Check", "Items per Basket", "Expected", 13.422756, "Actual", CONVERT ( [Items per Basket], DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Avg Selling Price", "Expected", 2.2139, "Actual", CONVERT ( [Avg Selling Price], DOUBLE ), "Tolerance", 0.0001 ),
+    ROW ( "Check", "Private Label Share", "Expected", 0.217124, "Actual", CONVERT ( [Private Label Share], DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Sales GROCERY", "Expected", 2316393.89, "Actual", CONVERT ( CALCULATE ( [Sales], Dim_Product[department] = "GROCERY" ), DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Share of Total GROCERY", "Expected", 0.503998, "Actual", CONVERT ( CALCULATE ( [Share of Total Sales], Dim_Product[department] = "GROCERY" ), DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Sales Store 367", "Expected", 148169.67, "Actual", CONVERT ( CALCULATE ( [Sales], Dim_Store[store_id] = "367" ), DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Sales week 10", "Expected", 90219.68, "Actual", CONVERT ( CALCULATE ( [Sales], Dim_Date[WeekNo] = 10 ), DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Sales PW at week 11", "Expected", 90219.68, "Actual", CONVERT ( CALCULATE ( [Sales PW], Dim_Date[WeekNo] = 11 ), DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Sales WoW % at week 11", "Expected", -0.051986, "Actual", CONVERT ( CALCULATE ( [Sales WoW %], Dim_Date[WeekNo] = 11 ), DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Rolling 4 Week Sales at week 20", "Expected", 353987.84, "Actual", CONVERT ( CALCULATE ( [Rolling 4 Week Sales], Dim_Date[WeekNo] = 20 ), DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Zero-Quantity Lines", "Expected", 8869.0, "Actual", CONVERT ( [Zero-Quantity Lines], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Free-Item Lines", "Expected", 2406.0, "Actual", CONVERT ( [Free-Item Lines], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Unknown-Product Lines", "Expected", 4836.0, "Actual", CONVERT ( [Unknown-Product Lines], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Unknown-Product Sales", "Expected", 172.57, "Actual", CONVERT ( [Unknown-Product Sales], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Zero-Quantity Sales", "Expected", 12.52, "Actual", CONVERT ( [Zero-Quantity Sales], DOUBLE ), "Tolerance", 0.01 ),
+    ROW ( "Check", "Source week mismatch lines", "Expected", 0.0, "Actual", CONVERT ( [Source Week Mismatch Lines], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Dim_Product rows", "Expected", 92348.0, "Actual", CONVERT ( COUNTROWS ( Dim_Product ), DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Dim_Store rows", "Expected", 457.0, "Actual", CONVERT ( COUNTROWS ( Dim_Store ), DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Dim_Date rows", "Expected", 365.0, "Actual", CONVERT ( COUNTROWS ( Dim_Date ), DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Closed days with sales", "Expected", 0.0, "Actual", CONVERT ( CALCULATE ( COUNTROWS ( Fact_Sales ), Dim_Date[IsClosed] = TRUE () ) + 0, DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Negative value lines", "Expected", 0.0, "Actual", CONVERT ( [Negative-Value Lines], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Exact duplicate lines", "Expected", 0.0, "Actual", CONVERT ( [Exact Duplicate Lines], DOUBLE ), "Tolerance", 0.5 ),
+    ROW ( "Check", "Discount % ex Fuel", "Expected", 0.156924, "Actual", CONVERT ( [Discount % ex Fuel], DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Discount % (depts over $10k) at SEAFOOD-PCKGD", "Expected", 0.251451, "Actual", CONVERT ( CALCULATE ( [Discount % (depts over $10k)], Dim_Product[department] = "SEAFOOD-PCKGD" ), DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Private Label Share (depts over $10k) at MISCELLANEOUS", "Expected", 0.64755, "Actual", CONVERT ( CALCULATE ( [Private Label Share (depts over $10k)], Dim_Product[department] = "MISCELLANEOUS" ), DOUBLE ), "Tolerance", 0.000001 ),
+    ROW ( "Check", "Rows vs control_totals.csv (difference)", "Expected", 0.0, "Actual", CONVERT ( [Loaded Rows (all)] - [Control Rows], DOUBLE ), "Tolerance", 0.005 ),
+    ROW ( "Check", "Sales vs control_totals.csv (difference)", "Expected", 0.0, "Actual", CONVERT ( ROUND ( [Sales (all)] - [Control Sales], 2 ), DOUBLE ), "Tolerance", 0.005 )
+  )
+RETURN
+  SELECTCOLUMNS (
+    Results,
+    "Check", [Check],
+    "Expected", [Expected],
+    "Actual", [Actual],
+    "Result", IF ( ABS ( [Actual] - [Expected] ) <= [Tolerance], "PASS", "FAIL" )
+  )
+ORDER BY [Result], [Check]
+
+// Blank-by-design checks: week 2 has no full prior week (week 1 is one day); week 4 has only three full weeks; TOYS ($4 of sales) is hidden by the report helpers. All three must be TRUE
+EVALUATE
+ROW (
+  "WoW blank in week 2", ISBLANK ( CALCULATE ( [Sales WoW %], Dim_Date[WeekNo] = 2 ) ),
+  "Rolling 4 weeks blank in week 4", ISBLANK ( CALCULATE ( [Rolling 4 Week Sales], Dim_Date[WeekNo] = 4 ) ),
+  "Tiny department hidden (TOYS)", ISBLANK ( CALCULATE ( [Discount % (depts over $10k)], Dim_Product[department] = "TOYS" ) )
+)

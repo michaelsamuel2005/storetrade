@@ -1,0 +1,12 @@
+relationship f08928a0-6872-4e78-85c5-728f0bb7d61f
+	fromColumn: Fact_Sales.product_id
+	toColumn: Dim_Product.product_id
+
+relationship d4ae0202-a482-4f25-81d6-25e159e280da
+	fromColumn: Fact_Sales.store_id
+	toColumn: Dim_Store.store_id
+
+relationship ad8c7f67-bce1-4b6d-8b75-57689f38d8c2
+	fromColumn: Fact_Sales.Date
+	toColumn: Dim_Date.Date
+

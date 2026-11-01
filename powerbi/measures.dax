@@ -1,0 +1,117 @@
+// storetrade: measures. Create an empty table named _Measures first (Home > Enter data > one blank column > Load, then hide the column).
+// Then Power BI Desktop > DAX query view > paste this file > Run, then click "Update model: Add new measure" on each measure
+// (or "Update model with changes" on the whole block). Format strings are in docs/BUSINESS_RULES.md next to each definition.
+// Currency is US dollars: The Complete Journey is American retail data.
+
+DEFINE
+  // ---------- Sales and discounts ----------
+  MEASURE _Measures[Sales] = SUM ( Fact_Sales[sales_value] )
+  MEASURE _Measures[Gross Sales] = SUM ( Fact_Sales[shelf_value] )
+  MEASURE _Measures[Retail Discount] = SUM ( Fact_Sales[retail_disc] )
+  MEASURE _Measures[Coupon Match Discount] = SUM ( Fact_Sales[coupon_match_disc] )
+  MEASURE _Measures[Total Discount] = [Retail Discount] + [Coupon Match Discount]
+  MEASURE _Measures[Discount %] = DIVIDE ( [Total Discount], [Gross Sales] )
+  MEASURE _Measures[Manufacturer Coupon Value] = SUM ( Fact_Sales[coupon_disc] )
+
+  // ---------- Customers, baskets and units (petrol excluded from unit measures: rule DQ03) ----------
+  MEASURE _Measures[Baskets] = DISTINCTCOUNT ( Fact_Sales[basket_id] )
+  MEASURE _Measures[Households] = DISTINCTCOUNT ( Fact_Sales[household_id] )
+  MEASURE _Measures[Units] = CALCULATE ( SUM ( Fact_Sales[quantity] ), Dim_Product[IsFuel] = FALSE () )
+  MEASURE _Measures[Sales ex Fuel] = CALCULATE ( [Sales], Dim_Product[IsFuel] = FALSE () )
+  MEASURE _Measures[Fuel Sales] = CALCULATE ( [Sales], Dim_Product[IsFuel] = TRUE () )
+  MEASURE _Measures[Avg Basket Value] = DIVIDE ( [Sales], [Baskets] )
+  MEASURE _Measures[Items per Basket] = DIVIDE ( [Units], CALCULATE ( [Baskets], Dim_Product[IsFuel] = FALSE () ) )
+  MEASURE _Measures[Avg Selling Price] = DIVIDE ( [Sales ex Fuel], [Units] )
+  MEASURE _Measures[Private Label Share] =
+      DIVIDE ( CALCULATE ( [Sales ex Fuel], Dim_Product[brand] = "Private" ), [Sales ex Fuel] )
+
+  // ---------- Mix and ranking ----------
+  MEASURE _Measures[Share of Total Sales] = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( Dim_Product ) ) )
+  MEASURE _Measures[Share of Department Sales] =
+      DIVIDE (
+          [Sales],
+          CALCULATE ( [Sales], REMOVEFILTERS ( Dim_Product[product_category] ), REMOVEFILTERS ( Dim_Product[product_type] ) )
+      )
+  // Store measures rank and compare whole stores: ALLSELECTED over a sort-by column (store_label sorts by store_no) ranked every
+  // row 1 in Power BI Desktop, so these use the whole Dim_Store table. Blank on totals.
+  MEASURE _Measures[Store Rank] =
+      IF ( HASONEVALUE ( Dim_Store[store_id] ), RANKX ( ALLSELECTED ( Dim_Store ), [Sales], , DESC, DENSE ) )
+  MEASURE _Measures[Sales vs Store Avg %] =
+      IF (
+          HASONEVALUE ( Dim_Store[store_id] ),
+          DIVIDE ( [Sales], CALCULATE ( AVERAGEX ( VALUES ( Dim_Store[store_id] ), [Sales] ), REMOVEFILTERS ( Dim_Store ) ) ) - 1
+      )
+
+  MEASURE _Measures[Discount % ex Fuel] = CALCULATE ( [Discount %], Dim_Product[IsFuel] = FALSE () )
+
+  // ---------- Report helpers: hide petrol and departments under $10,000 of non-fuel sales (TOYS has $4), so percentages are not distorted ----------
+  MEASURE _Measures[Discount % (depts over $10k)] = IF ( [Sales ex Fuel] >= 10000, [Discount % ex Fuel] )
+  MEASURE _Measures[Private Label Share (depts over $10k)] = IF ( [Sales ex Fuel] >= 10000, [Private Label Share] )
+  MEASURE _Measures[Retail Discount (depts over $10k)] =
+      IF ( [Sales ex Fuel] >= 10000, CALCULATE ( [Retail Discount], Dim_Product[IsFuel] = FALSE () ) )
+  MEASURE _Measures[Coupon Match Discount (depts over $10k)] =
+      IF ( [Sales ex Fuel] >= 10000, CALCULATE ( [Coupon Match Discount], Dim_Product[IsFuel] = FALSE () ) )
+
+  // ---------- Time: weekly (partial week 1 and a closed Christmas Day are handled, see rules DQ07, DQ08) ----------
+  MEASURE _Measures[Sales per Trading Day] =
+      DIVIDE ( [Sales], CALCULATE ( COUNTROWS ( Dim_Date ), Dim_Date[IsClosed] = FALSE () ) )
+  MEASURE _Measures[Sales PW] =
+      VAR w = SELECTEDVALUE ( Dim_Date[WeekNo] )
+      VAR prevIsFullWeek =
+          CALCULATE ( COUNTROWS ( Dim_Date ), ALL ( Dim_Date ), Dim_Date[WeekNo] = w - 1, Dim_Date[IsPartialWeek] = FALSE () )
+      RETURN
+          IF ( ISBLANK ( w ) || ISBLANK ( prevIsFullWeek ), BLANK (), CALCULATE ( [Sales], ALL ( Dim_Date ), Dim_Date[WeekNo] = w - 1 ) )
+  MEASURE _Measures[Sales WoW %] =
+      IF ( ISBLANK ( [Sales PW] ), BLANK (), DIVIDE ( [Sales] - [Sales PW], [Sales PW] ) )
+  MEASURE _Measures[Rolling 4 Week Sales] =
+      VAR w = SELECTEDVALUE ( Dim_Date[WeekNo] )
+      VAR window =
+          FILTER ( ALL ( Dim_Date ), Dim_Date[WeekNo] > w - 4 && Dim_Date[WeekNo] <= w && NOT ( Dim_Date[IsPartialWeek] ) )
+      VAR fullWeeks = CALCULATE ( DISTINCTCOUNT ( Dim_Date[WeekNo] ), window )
+      RETURN
+          IF ( ISBLANK ( w ) || fullWeeks < 4, BLANK (), CALCULATE ( [Sales], window ) )
+
+  // ---------- Data quality (one measure per rule in DQ_Rules; "+ 0" so an empty result shows 0, not blank) ----------
+  MEASURE _Measures[Zero-Quantity Lines] = CALCULATE ( COUNTROWS ( Fact_Sales ), Fact_Sales[line_flag] = "Zero quantity" ) + 0
+  MEASURE _Measures[Zero-Quantity Sales] = CALCULATE ( [Sales], Fact_Sales[line_flag] = "Zero quantity" )
+  MEASURE _Measures[Free-Item Lines] = CALCULATE ( COUNTROWS ( Fact_Sales ), Fact_Sales[line_flag] = "Free item" ) + 0
+  MEASURE _Measures[Fuel Lines] = CALCULATE ( COUNTROWS ( Fact_Sales ), Dim_Product[IsFuel] = TRUE () ) + 0
+  MEASURE _Measures[Unknown-Product Lines] = CALCULATE ( COUNTROWS ( Fact_Sales ), Dim_Product[department] = "UNKNOWN" ) + 0
+  MEASURE _Measures[Unknown-Product Sales] = CALCULATE ( [Sales], Dim_Product[department] = "UNKNOWN" )
+  // Heavy (scans every line): keep these three on the Data Quality page only
+  MEASURE _Measures[Source Week Mismatch Lines] =
+      COUNTROWS ( FILTER ( Fact_Sales, Fact_Sales[source_week] <> RELATED ( Dim_Date[WeekNo] ) ) ) + 0
+  MEASURE _Measures[Negative-Value Lines] =
+      COUNTROWS (
+          FILTER (
+              Fact_Sales,
+              Fact_Sales[sales_value] < 0 || Fact_Sales[retail_disc] < 0
+                  || Fact_Sales[coupon_disc] < 0 || Fact_Sales[coupon_match_disc] < 0
+          )
+      ) + 0
+  // DISTINCT of the whole table removes rows identical in every column, so the difference is the exact duplicates
+  MEASURE _Measures[Exact Duplicate Lines] = COUNTROWS ( Fact_Sales ) - COUNTROWS ( DISTINCT ( Fact_Sales ) ) + 0
+
+  // ---------- Reconciliation to the files exported before Power BI (ignore every slicer) ----------
+  MEASURE _Measures[Loaded Rows (all)] = CALCULATE ( COUNTROWS ( Fact_Sales ), REMOVEFILTERS () )
+  MEASURE _Measures[Sales (all)] = CALCULATE ( SUM ( Fact_Sales[sales_value] ), REMOVEFILTERS () )
+  MEASURE _Measures[Control Rows] = SUM ( Recon_Control[expected_rows] )
+  MEASURE _Measures[Control Sales] = SUM ( Recon_Control[expected_sales_value] )
+  MEASURE _Measures[Row Difference] = [Loaded Rows (all)] - [Control Rows]
+  MEASURE _Measures[Sales Difference] = ROUND ( [Sales (all)] - [Control Sales], 2 )
+  MEASURE _Measures[Actual (DQ rule)] =
+      SWITCH (
+          SELECTEDVALUE ( DQ_Rules[RuleID] ),
+          "DQ01", [Zero-Quantity Lines],
+          "DQ02", [Free-Item Lines],
+          "DQ03", [Fuel Lines],
+          "DQ04", [Unknown-Product Lines],
+          "DQ05", [Negative-Value Lines],
+          "DQ06", [Exact Duplicate Lines],
+          "DQ07", CALCULATE ( COUNTROWS ( Dim_Date ), Dim_Date[IsClosed] = TRUE () ),
+          "DQ08", [Source Week Mismatch Lines],
+          BLANK ()
+      )
+
+EVALUATE
+ROW ( "defined", 1 )

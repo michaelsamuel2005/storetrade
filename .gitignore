@@ -1,0 +1,11 @@
+# raw data: the package page states no licence, so it is re-created by scripts/export_raw.R, never committed
+data/*.csv
+raw/
+# Power BI
+*.pbix
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
+**/cache.abf
+__pycache__/
+.pytest_cache/
+data/*.zip

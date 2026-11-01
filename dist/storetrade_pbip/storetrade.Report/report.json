@@ -1,0 +1,503 @@
+{
+  "id": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "name": "SharedResources",
+        "type": 2,
+        "items": [
+          {
+            "type": 202,
+            "path": "BaseThemes/CY25SU11.json",
+            "name": "CY25SU11"
+          }
+        ],
+        "disabled": false
+      }
+    }
+  ],
+  "config": "{\"version\": \"5.68\", \"themeCollection\": {\"baseTheme\": {\"name\": \"CY25SU11\", \"version\": {\"visual\": \"2.4.0\", \"report\": \"3.0.0\", \"page\": \"2.3.0\"}, \"type\": 2}}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useNewFilterPaneExperience\": true, \"allowChangeFilterTypes\": true, \"useStylableVisualContainerHeader\": true, \"queryLimitOption\": 6, \"exportDataMode\": 1, \"useDefaultAggregateDisplayName\": true, \"useEnhancedTooltips\": true}, \"objects\": {\"section\": [{\"properties\": {\"verticalAlignment\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "name": "ReportSection58f209cb7d9bdaa90315",
+      "displayName": "Trading overview",
+      "filters": "[]",
+      "ordinal": 0,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 8,
+          "z": 1000,
+          "width": 820,
+          "height": 56,
+          "config": "{\"name\": \"72012e7555cae97d5b14\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 8, \"z\": 1000, \"width\": 820, \"height\": 56, \"tabOrder\": 1000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"storetrade: store and category trading, 2017\", \"textStyle\": {\"fontSize\": \"18pt\", \"fontWeight\": \"bold\"}}]}, {\"textRuns\": [{\"value\": \"US grocery data (84.51\\u00b0, The Complete Journey), in US dollars. Week 1 is one day; 25 December has no transactions.\", \"textStyle\": {\"fontSize\": \"10pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 1000
+        },
+        {
+          "x": 640,
+          "y": 10,
+          "z": 2000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"f7820fbb156c246afdaa\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 640, \"y\": 10, \"z\": 2000, \"width\": 200, \"height\": 52, \"tabOrder\": 2000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Date.Month\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Month\"}, \"Name\": \"Dim_Date.Month\", \"NativeReferenceName\": \"Month\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Month slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Month\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 2000
+        },
+        {
+          "x": 850,
+          "y": 10,
+          "z": 3000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"b982f1b2cc30e9645aa5\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 850, \"y\": 10, \"z\": 3000, \"width\": 200, \"height\": 52, \"tabOrder\": 3000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Department slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Department\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 3000
+        },
+        {
+          "x": 1060,
+          "y": 10,
+          "z": 4000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"d0995aecf2a474288bca\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1060, \"y\": 10, \"z\": 4000, \"width\": 200, \"height\": 52, \"tabOrder\": 4000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Product.IsFuel\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"IsFuel\"}, \"Name\": \"Dim_Product.IsFuel\", \"NativeReferenceName\": \"IsFuel\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Petrol lines slicer: TRUE shows petrol only'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"IsFuel\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 4000
+        },
+        {
+          "x": 20,
+          "y": 76,
+          "z": 5000,
+          "width": 198,
+          "height": 96,
+          "config": "{\"name\": \"39693df355c9e6d63877\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 76, \"z\": 5000, \"width\": 198, \"height\": 96, \"tabOrder\": 5000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}, \"Name\": \"_Measures.Sales\", \"NativeReferenceName\": \"Sales\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Sales: Sales after discounts'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 5000
+        },
+        {
+          "x": 228,
+          "y": 76,
+          "z": 6000,
+          "width": 198,
+          "height": 96,
+          "config": "{\"name\": \"21522ecc1a357905b0ca\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 228, \"y\": 76, \"z\": 6000, \"width\": 198, \"height\": 96, \"tabOrder\": 6000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Discount %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Discount %\"}, \"Name\": \"_Measures.Discount %\", \"NativeReferenceName\": \"Discount %\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Discount %: Discount as a share of shelf value'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 6000
+        },
+        {
+          "x": 436,
+          "y": 76,
+          "z": 7000,
+          "width": 198,
+          "height": 96,
+          "config": "{\"name\": \"b4ca329d0f6ff01baf63\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 436, \"y\": 76, \"z\": 7000, \"width\": 198, \"height\": 96, \"tabOrder\": 7000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Baskets\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Baskets\"}, \"Name\": \"_Measures.Baskets\", \"NativeReferenceName\": \"Baskets\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Baskets: Shopping trips'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 7000
+        },
+        {
+          "x": 644,
+          "y": 76,
+          "z": 8000,
+          "width": 198,
+          "height": 96,
+          "config": "{\"name\": \"cee7f201ba162cd867d0\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 76, \"z\": 8000, \"width\": 198, \"height\": 96, \"tabOrder\": 8000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Avg Basket Value\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Avg Basket Value\"}, \"Name\": \"_Measures.Avg Basket Value\", \"NativeReferenceName\": \"Avg Basket Value\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Avg Basket Value: Sales per basket'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 8000
+        },
+        {
+          "x": 852,
+          "y": 76,
+          "z": 9000,
+          "width": 198,
+          "height": 96,
+          "config": "{\"name\": \"754e86841bbf75e06d20\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 852, \"y\": 76, \"z\": 9000, \"width\": 198, \"height\": 96, \"tabOrder\": 9000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Items per Basket\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Items per Basket\"}, \"Name\": \"_Measures.Items per Basket\", \"NativeReferenceName\": \"Items per Basket\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Items per Basket: Units per basket, petrol excluded'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 9000
+        },
+        {
+          "x": 1060,
+          "y": 76,
+          "z": 10000,
+          "width": 198,
+          "height": 96,
+          "config": "{\"name\": \"22caa33f3c7c6c3d255b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1060, \"y\": 76, \"z\": 10000, \"width\": 198, \"height\": 96, \"tabOrder\": 10000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Private Label Share\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Private Label Share\"}, \"Name\": \"_Measures.Private Label Share\", \"NativeReferenceName\": \"Private Label Share\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Private Label Share: Own-label share of non-fuel sales'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 10000
+        },
+        {
+          "x": 20,
+          "y": 184,
+          "z": 11000,
+          "width": 830,
+          "height": 452,
+          "config": "{\"name\": \"9023122d2b2bdbafd3ff\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 184, \"z\": 11000, \"width\": 830, \"height\": 452, \"tabOrder\": 11000}}], \"singleVisual\": {\"visualType\": \"lineClusteredColumnComboChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Date.WeekLabel\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Sales\"}], \"Y2\": [{\"queryRef\": \"_Measures.Rolling 4 Week Sales\"}], \"Tooltips\": [{\"queryRef\": \"_Measures.Sales WoW %\"}, {\"queryRef\": \"_Measures.Sales per Trading Day\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"WeekLabel\"}, \"Name\": \"Dim_Date.WeekLabel\", \"NativeReferenceName\": \"WeekLabel\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}, \"Name\": \"_Measures.Sales\", \"NativeReferenceName\": \"Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Rolling 4 Week Sales\"}, \"Name\": \"_Measures.Rolling 4 Week Sales\", \"NativeReferenceName\": \"Rolling 4 Week Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales WoW %\"}, \"Name\": \"_Measures.Sales WoW %\", \"NativeReferenceName\": \"Sales WoW %\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales per Trading Day\"}, \"Name\": \"_Measures.Sales per Trading Day\", \"NativeReferenceName\": \"Sales per Trading Day\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"WeekLabel\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"objects\": {\"categoryAxis\": [{\"properties\": {\"axisType\": {\"expr\": {\"Literal\": {\"Value\": \"'Categorical'\"}}}}}], \"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'How are weekly sales trending? Bars: week; line: last four full weeks'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Weekly sales as columns with the rolling four-week total as a line, weeks 1 to 53'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 11000
+        },
+        {
+          "x": 866,
+          "y": 184,
+          "z": 12000,
+          "width": 394,
+          "height": 452,
+          "config": "{\"name\": \"795fa7e0c0a6f00f5600\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 866, \"y\": 184, \"z\": 12000, \"width\": 394, \"height\": 452, \"tabOrder\": 12000}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Date.DayName\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Sales per Trading Day\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"DayName\"}, \"Name\": \"Dim_Date.DayName\", \"NativeReferenceName\": \"DayName\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales per Trading Day\"}, \"Name\": \"_Measures.Sales per Trading Day\", \"NativeReferenceName\": \"Sales per Trading Day\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"DayName\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Which days trade best? Sales per trading day'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Average sales per trading day for each weekday, Monday to Sunday'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 12000
+        },
+        {
+          "x": 20,
+          "y": 646,
+          "z": 13000,
+          "width": 1240,
+          "height": 50,
+          "config": "{\"name\": \"54c2625a1e58b21414a9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 646, \"z\": 13000, \"width\": 1240, \"height\": 50, \"tabOrder\": 13000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Petrol counts in Sales but not in units or items per basket (its 'quantity' is not a unit count). Week 53 has six trading days because Christmas Day is closed.\", \"textStyle\": {\"fontSize\": \"9pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 13000
+        }
+      ],
+      "config": "{}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "ReportSection322b9d2ceceebfc327e4",
+      "displayName": "Stores",
+      "filters": "[]",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 8,
+          "z": 1000,
+          "width": 820,
+          "height": 56,
+          "config": "{\"name\": \"8b75e31602b074370165\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 8, \"z\": 1000, \"width\": 820, \"height\": 56, \"tabOrder\": 1000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Stores: which stores lead and lag?\", \"textStyle\": {\"fontSize\": \"18pt\", \"fontWeight\": \"bold\"}}]}, {\"textRuns\": [{\"value\": \"The extract has no store attributes (region, size, format), so stores are compared with each other.\", \"textStyle\": {\"fontSize\": \"10pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 1000
+        },
+        {
+          "x": 850,
+          "y": 10,
+          "z": 2000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"6202fd8a7d53ae8b9fc2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 850, \"y\": 10, \"z\": 2000, \"width\": 200, \"height\": 52, \"tabOrder\": 2000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Date.Month\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Month\"}, \"Name\": \"Dim_Date.Month\", \"NativeReferenceName\": \"Month\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Month slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Month\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 2000
+        },
+        {
+          "x": 1060,
+          "y": 10,
+          "z": 3000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"ea85247eed91eb2e7b3b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1060, \"y\": 10, \"z\": 3000, \"width\": 200, \"height\": 52, \"tabOrder\": 3000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Department slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Department\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 3000
+        },
+        {
+          "x": 20,
+          "y": 76,
+          "z": 4000,
+          "width": 720,
+          "height": 624,
+          "config": "{\"name\": \"01f1c6ec898c8753fc2b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 76, \"z\": 4000, \"width\": 720, \"height\": 624, \"tabOrder\": 4000}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Store.store_label\"}, {\"queryRef\": \"_Measures.Store Rank\"}, {\"queryRef\": \"_Measures.Sales\"}, {\"queryRef\": \"_Measures.Sales vs Store Avg %\"}, {\"queryRef\": \"_Measures.Baskets\"}, {\"queryRef\": \"_Measures.Avg Basket Value\"}, {\"queryRef\": \"_Measures.Discount %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Store\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"store_label\"}, \"Name\": \"Dim_Store.store_label\", \"NativeReferenceName\": \"store_label\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Store Rank\"}, \"Name\": \"_Measures.Store Rank\", \"NativeReferenceName\": \"Store Rank\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}, \"Name\": \"_Measures.Sales\", \"NativeReferenceName\": \"Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales vs Store Avg %\"}, \"Name\": \"_Measures.Sales vs Store Avg %\", \"NativeReferenceName\": \"Sales vs Store Avg %\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Baskets\"}, \"Name\": \"_Measures.Baskets\", \"NativeReferenceName\": \"Baskets\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Avg Basket Value\"}, \"Name\": \"_Measures.Avg Basket Value\", \"NativeReferenceName\": \"Avg Basket Value\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Discount %\"}, \"Name\": \"_Measures.Discount %\", \"NativeReferenceName\": \"Discount %\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Store Rank\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Top 25 stores by sales'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Table of the 25 stores with the highest sales, ranked'\"}}}}}]}}}",
+          "filters": "[{\"name\": \"Filter07bad1dbc3b377a0\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"Dim_Store\"}}, \"Property\": \"store_label\"}}, \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"subquery\", \"Expression\": {\"Subquery\": {\"Query\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Store\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"store_label\"}, \"Name\": \"field\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}}}], \"Top\": 25}}}, \"Type\": 2}, {\"Name\": \"d\", \"Entity\": \"Dim_Store\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"In\": {\"Expressions\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"store_label\"}}], \"Table\": {\"SourceRef\": {\"Source\": \"subquery\"}}}}}]}, \"type\": \"TopN\", \"howCreated\": 1}]",
+          "tabOrder": 4000
+        },
+        {
+          "x": 756,
+          "y": 76,
+          "z": 5000,
+          "width": 504,
+          "height": 300,
+          "config": "{\"name\": \"3bbb7dab2f5ba76bf4a5\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 756, \"y\": 76, \"z\": 5000, \"width\": 504, \"height\": 300, \"tabOrder\": 5000}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Store.store_label\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Store\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"store_label\"}, \"Name\": \"Dim_Store.store_label\", \"NativeReferenceName\": \"store_label\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}, \"Name\": \"_Measures.Sales\", \"NativeReferenceName\": \"Sales\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Top 15 stores by sales'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Bar chart of the 15 stores with the highest sales'\"}}}}}]}}}",
+          "filters": "[{\"name\": \"Filter202784ff3b5b8bf1\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"Dim_Store\"}}, \"Property\": \"store_label\"}}, \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"subquery\", \"Expression\": {\"Subquery\": {\"Query\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Store\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"store_label\"}, \"Name\": \"field\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}}}], \"Top\": 15}}}, \"Type\": 2}, {\"Name\": \"d\", \"Entity\": \"Dim_Store\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"In\": {\"Expressions\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"store_label\"}}], \"Table\": {\"SourceRef\": {\"Source\": \"subquery\"}}}}}]}, \"type\": \"TopN\", \"howCreated\": 1}]",
+          "tabOrder": 5000
+        },
+        {
+          "x": 756,
+          "y": 388,
+          "z": 6000,
+          "width": 504,
+          "height": 312,
+          "config": "{\"name\": \"1cc07d22dc499d2cb398\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 756, \"y\": 388, \"z\": 6000, \"width\": 504, \"height\": 312, \"tabOrder\": 6000}}], \"singleVisual\": {\"visualType\": \"scatterChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Store.store_label\", \"active\": true}], \"X\": [{\"queryRef\": \"_Measures.Baskets\"}], \"Y\": [{\"queryRef\": \"_Measures.Avg Basket Value\"}], \"Size\": [{\"queryRef\": \"_Measures.Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Store\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"store_label\"}, \"Name\": \"Dim_Store.store_label\", \"NativeReferenceName\": \"store_label\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Baskets\"}, \"Name\": \"_Measures.Baskets\", \"NativeReferenceName\": \"Baskets\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Avg Basket Value\"}, \"Name\": \"_Measures.Avg Basket Value\", \"NativeReferenceName\": \"Avg Basket Value\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}, \"Name\": \"_Measures.Sales\", \"NativeReferenceName\": \"Sales\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Do stores win on visits or on basket size?'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Scatter of stores: number of baskets against average basket value, bubble size is sales'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 6000
+        }
+      ],
+      "config": "{}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "ReportSection10e06d798b50fe8170b1",
+      "displayName": "Departments",
+      "filters": "[]",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 8,
+          "z": 1000,
+          "width": 820,
+          "height": 56,
+          "config": "{\"name\": \"afe2dcf580e2c897d534\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 8, \"z\": 1000, \"width\": 820, \"height\": 56, \"tabOrder\": 1000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Departments and categories: what sells, and at what price?\", \"textStyle\": {\"fontSize\": \"18pt\", \"fontWeight\": \"bold\"}}]}, {\"textRuns\": [{\"value\": \"Expand a department to see its categories. Petrol has no average selling price because its quantity is not units.\", \"textStyle\": {\"fontSize\": \"10pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 1000
+        },
+        {
+          "x": 850,
+          "y": 10,
+          "z": 2000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"5f71b684d70420984476\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 850, \"y\": 10, \"z\": 2000, \"width\": 200, \"height\": 52, \"tabOrder\": 2000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Date.Month\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Month\"}, \"Name\": \"Dim_Date.Month\", \"NativeReferenceName\": \"Month\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Month slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Month\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 2000
+        },
+        {
+          "x": 1060,
+          "y": 10,
+          "z": 3000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"4dce29cf61f7415df9a6\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1060, \"y\": 10, \"z\": 3000, \"width\": 200, \"height\": 52, \"tabOrder\": 3000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Department slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Department\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 3000
+        },
+        {
+          "x": 20,
+          "y": 76,
+          "z": 4000,
+          "width": 760,
+          "height": 624,
+          "config": "{\"name\": \"1e7a68c9ac3d6ddd65ea\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 76, \"z\": 4000, \"width\": 760, \"height\": 624, \"tabOrder\": 4000}}], \"singleVisual\": {\"visualType\": \"pivotTable\", \"projections\": {\"Rows\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}, {\"queryRef\": \"Dim_Product.product_category\", \"active\": true}], \"Values\": [{\"queryRef\": \"_Measures.Sales\"}, {\"queryRef\": \"_Measures.Share of Total Sales\"}, {\"queryRef\": \"_Measures.Share of Department Sales\"}, {\"queryRef\": \"_Measures.Discount %\"}, {\"queryRef\": \"_Measures.Avg Selling Price\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"product_category\"}, \"Name\": \"Dim_Product.product_category\", \"NativeReferenceName\": \"product_category\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}, \"Name\": \"_Measures.Sales\", \"NativeReferenceName\": \"Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Share of Total Sales\"}, \"Name\": \"_Measures.Share of Total Sales\", \"NativeReferenceName\": \"Share of Total Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Share of Department Sales\"}, \"Name\": \"_Measures.Share of Department Sales\", \"NativeReferenceName\": \"Share of Department Sales\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Discount %\"}, \"Name\": \"_Measures.Discount %\", \"NativeReferenceName\": \"Discount %\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Avg Selling Price\"}, \"Name\": \"_Measures.Avg Selling Price\", \"NativeReferenceName\": \"Avg Selling Price\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Sales, share, discount and price by department and category'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Matrix of departments, expandable to categories, with sales, shares, discount and average selling price'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 4000
+        },
+        {
+          "x": 796,
+          "y": 76,
+          "z": 5000,
+          "width": 464,
+          "height": 300,
+          "config": "{\"name\": \"f30a1ee22ef48dd215ee\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 796, \"y\": 76, \"z\": 5000, \"width\": 464, \"height\": 300, \"tabOrder\": 5000}}], \"singleVisual\": {\"visualType\": \"treemap\", \"projections\": {\"Group\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}], \"Values\": [{\"queryRef\": \"_Measures.Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales\"}, \"Name\": \"_Measures.Sales\", \"NativeReferenceName\": \"Sales\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Share of sales by department'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Treemap of sales by department'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 5000
+        },
+        {
+          "x": 796,
+          "y": 388,
+          "z": 6000,
+          "width": 464,
+          "height": 312,
+          "config": "{\"name\": \"9be4439b6526ada7c4f3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 796, \"y\": 388, \"z\": 6000, \"width\": 464, \"height\": 312, \"tabOrder\": 6000}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Private Label Share (depts over $10k)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Private Label Share (depts over $10k)\"}, \"Name\": \"_Measures.Private Label Share (depts over $10k)\", \"NativeReferenceName\": \"Private Label Share (depts over $10k)\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Private Label Share (depts over $10k)\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Where does own label sell? Private label share'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Private label share of non-fuel sales by department, departments under 10,000 dollars hidden'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 6000
+        }
+      ],
+      "config": "{}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "ReportSectionf50cedbe83f302ca3360",
+      "displayName": "Discounts",
+      "filters": "[]",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 8,
+          "z": 1000,
+          "width": 820,
+          "height": 56,
+          "config": "{\"name\": \"cda56b5006f87caefe87\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 8, \"z\": 1000, \"width\": 820, \"height\": 56, \"tabOrder\": 1000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Discounts and coupons: where do discounts go?\", \"textStyle\": {\"fontSize\": \"18pt\", \"fontWeight\": \"bold\"}}]}, {\"textRuns\": [{\"value\": \"Petrol excluded; departments under $10,000 of non-fuel sales hidden so tiny ones (TOYS: $4) do not distort the view.\", \"textStyle\": {\"fontSize\": \"10pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 1000
+        },
+        {
+          "x": 850,
+          "y": 10,
+          "z": 2000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"959a7628192a04ff6c4e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 850, \"y\": 10, \"z\": 2000, \"width\": 200, \"height\": 52, \"tabOrder\": 2000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Date.Month\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Month\"}, \"Name\": \"Dim_Date.Month\", \"NativeReferenceName\": \"Month\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Month slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Month\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 2000
+        },
+        {
+          "x": 1060,
+          "y": 10,
+          "z": 3000,
+          "width": 200,
+          "height": 52,
+          "config": "{\"name\": \"dda933918b1ebc45e6c0\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1060, \"y\": 10, \"z\": 3000, \"width\": 200, \"height\": 52, \"tabOrder\": 3000}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Department slicer'\"}}}}}]}, \"syncGroup\": {\"groupName\": \"Department\", \"fieldChanges\": true, \"filterChanges\": true}}}",
+          "filters": "[]",
+          "tabOrder": 3000
+        },
+        {
+          "x": 20,
+          "y": 76,
+          "z": 4000,
+          "width": 620,
+          "height": 312,
+          "config": "{\"name\": \"5a0bc5c1b21daca9181d\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 76, \"z\": 4000, \"width\": 620, \"height\": 312, \"tabOrder\": 4000}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Discount % (depts over $10k)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Discount % (depts over $10k)\"}, \"Name\": \"_Measures.Discount % (depts over $10k)\", \"NativeReferenceName\": \"Discount % (depts over $10k)\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Discount % (depts over $10k)\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Discount % of shelf value by department'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Discount as a share of shelf value by department, highest first'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 4000
+        },
+        {
+          "x": 656,
+          "y": 76,
+          "z": 5000,
+          "width": 604,
+          "height": 312,
+          "config": "{\"name\": \"d56a4bb7e2f7a74a3000\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 656, \"y\": 76, \"z\": 5000, \"width\": 604, \"height\": 312, \"tabOrder\": 5000}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Date.WeekLabel\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Discount % ex Fuel\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"WeekLabel\"}, \"Name\": \"Dim_Date.WeekLabel\", \"NativeReferenceName\": \"WeekLabel\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Discount % ex Fuel\"}, \"Name\": \"_Measures.Discount % ex Fuel\", \"NativeReferenceName\": \"Discount % ex Fuel\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"WeekLabel\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"objects\": {\"categoryAxis\": [{\"properties\": {\"axisType\": {\"expr\": {\"Literal\": {\"Value\": \"'Categorical'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Is discounting rising or falling through the year?'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Weekly discount percentage excluding petrol, weeks 1 to 53'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 5000
+        },
+        {
+          "x": 20,
+          "y": 400,
+          "z": 6000,
+          "width": 900,
+          "height": 300,
+          "config": "{\"name\": \"16d260ec270b7255096c\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 400, \"z\": 6000, \"width\": 900, \"height\": 300, \"tabOrder\": 6000}}], \"singleVisual\": {\"visualType\": \"barChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Dim_Product.department\", \"active\": true}], \"Y\": [{\"queryRef\": \"_Measures.Retail Discount (depts over $10k)\"}, {\"queryRef\": \"_Measures.Coupon Match Discount (depts over $10k)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"Dim_Product\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"department\"}, \"Name\": \"Dim_Product.department\", \"NativeReferenceName\": \"department\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Retail Discount (depts over $10k)\"}, \"Name\": \"_Measures.Retail Discount (depts over $10k)\", \"NativeReferenceName\": \"Retail Discount (depts over $10k)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Coupon Match Discount (depts over $10k)\"}, \"Name\": \"_Measures.Coupon Match Discount (depts over $10k)\", \"NativeReferenceName\": \"Coupon Match Discount (depts over $10k)\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Retail Discount (depts over $10k)\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"position\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Retailer discount versus coupon match, by department'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Stacked bars of retailer loyalty discount and coupon match discount by department'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 6000
+        },
+        {
+          "x": 936,
+          "y": 400,
+          "z": 7000,
+          "width": 324,
+          "height": 140,
+          "config": "{\"name\": \"fbcec2fe68ceca8e362b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 936, \"y\": 400, \"z\": 7000, \"width\": 324, \"height\": 140, \"tabOrder\": 7000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Manufacturer Coupon Value\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Manufacturer Coupon Value\"}, \"Name\": \"_Measures.Manufacturer Coupon Value\", \"NativeReferenceName\": \"Manufacturer Coupon Value\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Manufacturer coupons (funded by manufacturers, not in Discount %)'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Total value of manufacturer-funded coupons'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 7000
+        },
+        {
+          "x": 936,
+          "y": 552,
+          "z": 8000,
+          "width": 324,
+          "height": 148,
+          "config": "{\"name\": \"773602113499cdb37715\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 936, \"y\": 552, \"z\": 8000, \"width\": 324, \"height\": 148, \"tabOrder\": 8000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"17 products missing from the product file account for a quarter of manufacturer coupon value on only $173 of sales: they look like coupon-redemption lines.\", \"textStyle\": {\"fontSize\": \"9pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 8000
+        }
+      ],
+      "config": "{}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "name": "ReportSectionec29a72843676336073a",
+      "displayName": "Data quality",
+      "filters": "[]",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 8,
+          "z": 1000,
+          "width": 820,
+          "height": 56,
+          "config": "{\"name\": \"65511e60e3d16b5be56d\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 8, \"z\": 1000, \"width\": 820, \"height\": 56, \"tabOrder\": 1000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Data quality and reconciliation: can the numbers be trusted?\", \"textStyle\": {\"fontSize\": \"18pt\", \"fontWeight\": \"bold\"}}]}, {\"textRuns\": [{\"value\": \"Loaded rows and sales are compared with control totals written by the export before Power BI saw the data.\", \"textStyle\": {\"fontSize\": \"10pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 1000
+        },
+        {
+          "x": 20,
+          "y": 76,
+          "z": 2000,
+          "width": 300,
+          "height": 96,
+          "config": "{\"name\": \"768a8fc25767095b1d78\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 76, \"z\": 2000, \"width\": 300, \"height\": 96, \"tabOrder\": 2000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Row Difference\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Row Difference\"}, \"Name\": \"_Measures.Row Difference\", \"NativeReferenceName\": \"Row Difference\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Loaded rows minus control rows; must be 0'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 2000
+        },
+        {
+          "x": 336,
+          "y": 76,
+          "z": 3000,
+          "width": 300,
+          "height": 96,
+          "config": "{\"name\": \"cc3b33c6fbd46298f4e8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 336, \"y\": 76, \"z\": 3000, \"width\": 300, \"height\": 96, \"tabOrder\": 3000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Sales Difference\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales Difference\"}, \"Name\": \"_Measures.Sales Difference\", \"NativeReferenceName\": \"Sales Difference\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Loaded sales minus control sales; must be 0'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 3000
+        },
+        {
+          "x": 20,
+          "y": 184,
+          "z": 4000,
+          "width": 300,
+          "height": 96,
+          "config": "{\"name\": \"3936dc8f623e16d8dbe3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 184, \"z\": 4000, \"width\": 300, \"height\": 96, \"tabOrder\": 4000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Loaded Rows (all)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Loaded Rows (all)\"}, \"Name\": \"_Measures.Loaded Rows (all)\", \"NativeReferenceName\": \"Loaded Rows (all)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Rows loaded into the model'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 4000
+        },
+        {
+          "x": 336,
+          "y": 184,
+          "z": 5000,
+          "width": 300,
+          "height": 96,
+          "config": "{\"name\": \"c2fed826547b4b75a0d5\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 336, \"y\": 184, \"z\": 5000, \"width\": 300, \"height\": 96, \"tabOrder\": 5000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Control Rows\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Control Rows\"}, \"Name\": \"_Measures.Control Rows\", \"NativeReferenceName\": \"Control Rows\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Rows in the export'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 5000
+        },
+        {
+          "x": 652,
+          "y": 184,
+          "z": 6000,
+          "width": 300,
+          "height": 96,
+          "config": "{\"name\": \"61839c645b6af9e2ef15\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 652, \"y\": 184, \"z\": 6000, \"width\": 300, \"height\": 96, \"tabOrder\": 6000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Sales (all)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Sales (all)\"}, \"Name\": \"_Measures.Sales (all)\", \"NativeReferenceName\": \"Sales (all)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Sales loaded into the model'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 6000
+        },
+        {
+          "x": 968,
+          "y": 184,
+          "z": 7000,
+          "width": 300,
+          "height": 96,
+          "config": "{\"name\": \"495d93c641097bd3748c\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 968, \"y\": 184, \"z\": 7000, \"width\": 300, \"height\": 96, \"tabOrder\": 7000}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"_Measures.Control Sales\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Control Sales\"}, \"Name\": \"_Measures.Control Sales\", \"NativeReferenceName\": \"Control Sales\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Sales in the export'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 7000
+        },
+        {
+          "x": 20,
+          "y": 292,
+          "z": 8000,
+          "width": 1240,
+          "height": 300,
+          "config": "{\"name\": \"c83c13fe9425f4581760\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 292, \"z\": 8000, \"width\": 1240, \"height\": 300, \"tabOrder\": 8000}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"DQ_Rules.RuleID\"}, {\"queryRef\": \"DQ_Rules.Check\"}, {\"queryRef\": \"DQ_Rules.Treatment\"}, {\"queryRef\": \"DQ_Rules.ExpectedCount\"}, {\"queryRef\": \"_Measures.Actual (DQ rule)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"DQ_Rules\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"_Measures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"RuleID\"}, \"Name\": \"DQ_Rules.RuleID\", \"NativeReferenceName\": \"RuleID\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Check\"}, \"Name\": \"DQ_Rules.Check\", \"NativeReferenceName\": \"Check\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Treatment\"}, \"Name\": \"DQ_Rules.Treatment\", \"NativeReferenceName\": \"Treatment\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"ExpectedCount\"}, \"Name\": \"DQ_Rules.ExpectedCount\", \"NativeReferenceName\": \"ExpectedCount\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Actual (DQ rule)\"}, \"Name\": \"_Measures.Actual (DQ rule)\", \"NativeReferenceName\": \"Actual (DQ rule)\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"RuleID\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Data-quality rules: expected count against what the model finds'\"}}}}}], \"general\": [{\"properties\": {\"altText\": {\"expr\": {\"Literal\": {\"Value\": \"'Table of eight data-quality rules with the expected and actual counts'\"}}}}}]}}}",
+          "filters": "[]",
+          "tabOrder": 8000
+        },
+        {
+          "x": 20,
+          "y": 602,
+          "z": 9000,
+          "width": 1240,
+          "height": 100,
+          "config": "{\"name\": \"d884a098beb673d2a818\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 602, \"z\": 9000, \"width\": 1240, \"height\": 100, \"tabOrder\": 9000}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Assumptions\", \"textStyle\": {\"fontSize\": \"11pt\", \"fontWeight\": \"bold\"}}]}, {\"textRuns\": [{\"value\": \"Gross Sales = sales_value + retail_disc + coupon_match_disc, assuming sales_value is net of those discounts.\", \"textStyle\": {\"fontSize\": \"9pt\"}}]}, {\"textRuns\": [{\"value\": \"US grocery data from 2017 (84.51\\u00b0), in dollars; households are a sample of frequent shoppers.\", \"textStyle\": {\"fontSize\": \"9pt\"}}]}, {\"textRuns\": [{\"value\": \"Money was rounded to whole cents at export: 28 cells carried floating-point residue (largest 1.8e-15).\", \"textStyle\": {\"fontSize\": \"9pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "tabOrder": 9000
+        }
+      ],
+      "config": "{}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    }
+  ]
+}

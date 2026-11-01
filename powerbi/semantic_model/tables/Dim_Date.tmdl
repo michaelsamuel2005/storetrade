@@ -1,0 +1,151 @@
+table Dim_Date
+	lineageTag: b2b54588-3e5e-4530-885f-f72c24c5507a
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: d0fab9e2-6a52-4177-a7e9-bf6b29d29472
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 92e0f4d3-7239-4fb4-ae5e-a61d9b070495
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column MonthNo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 982cb51d-0213-4ab2-bf4d-fc1b6b6a7eaa
+		summarizeBy: none
+		sourceColumn: MonthNo
+
+		annotation SummarizationSetBy = User
+
+	column Month
+		dataType: string
+		lineageTag: 0a7e9278-59eb-4570-a720-10114088733f
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: MonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekNo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8177bbca-c1f8-43f9-85c4-a623c7a00424
+		summarizeBy: none
+		sourceColumn: WeekNo
+
+		annotation SummarizationSetBy = User
+
+	column WeekStart
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d2795541-bfef-4cec-bdc8-d4c0a3b61668
+		summarizeBy: none
+		sourceColumn: WeekStart
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WeekLabel
+		dataType: string
+		lineageTag: 5b004071-c36b-460e-9ea0-f2e12a2c1a93
+		summarizeBy: none
+		sourceColumn: WeekLabel
+		sortByColumn: WeekNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2733401c-7247-4bb5-81b0-0d64030b4b97
+		summarizeBy: none
+		sourceColumn: DayNo
+
+		annotation SummarizationSetBy = User
+
+	column DayName
+		dataType: string
+		lineageTag: aeb6e13f-2602-4e1f-8d46-c1cb6febbde3
+		summarizeBy: none
+		sourceColumn: DayName
+		sortByColumn: DayNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bb5176cf-13ec-487b-bef1-67d4a644c598
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPartialWeek
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2c0daaa1-f583-4055-9e9e-ae8abcd83f8f
+		summarizeBy: none
+		sourceColumn: IsPartialWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsClosed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4b52c583-6ff5-4816-9954-0c598ce5a1bb
+		summarizeBy: none
+		sourceColumn: IsClosed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Date = m
+		mode: import
+		source =
+				// Query: Dim_Date   (Enable load: on; mark as date table on [Date]). One row per calendar day, 365 rows.
+				// Weeks reproduce the source: Monday-start, and week 1 is Sunday 1 January alone (rule DQ08 shows zero disagreements).
+				// IsPartialWeek is true for week 1 only (its other six days belong to the previous year): week-on-week and rolling measures skip it.
+				let
+				    Days = Duration.Days(Param_EndDate - Param_StartDate) + 1,
+				    Dates = List.Dates(Param_StartDate, Days, #duration(1, 0, 0, 0)),
+				    AsTable = Table.TransformColumnTypes(Table.FromList(Dates, Splitter.SplitByNothing(), {"Date"}), {{"Date", type date}}),
+				    AddYear = Table.AddColumn(AsTable, "Year", each Date.Year([Date]), Int64.Type),
+				    AddMonthNo = Table.AddColumn(AddYear, "MonthNo", each Date.Month([Date]), Int64.Type),
+				    AddMonth = Table.AddColumn(AddMonthNo, "Month", each Date.ToText([Date], "MMM", "en-GB"), type text),
+				    AddWeekStartRaw = Table.AddColumn(AddMonth, "WeekMonday", each Date.StartOfWeek([Date], Day.Monday), type date),
+				    AddWeekNo = Table.AddColumn(AddWeekStartRaw, "WeekNo",
+				        each Number.IntegerDivide(Duration.Days([WeekMonday] - #date(2016, 12, 26)), 7) + 1, Int64.Type),
+				    AddWeekStart = Table.AddColumn(AddWeekNo, "WeekStart", each List.Max({[WeekMonday], Param_StartDate}), type date),
+				    AddWeekLabel = Table.AddColumn(AddWeekStart, "WeekLabel", each "W" & Text.PadStart(Text.From([WeekNo]), 2, "0"), type text),
+				    AddDayNo = Table.AddColumn(AddWeekLabel, "DayNo", each Date.DayOfWeek([Date], Day.Monday) + 1, Int64.Type),
+				    AddDayName = Table.AddColumn(AddDayNo, "DayName", each Date.ToText([Date], "ddd", "en-GB"), type text),
+				    AddWeekend = Table.AddColumn(AddDayName, "IsWeekend", each [DayNo] >= 6, type logical),
+				    AddPartial = Table.AddColumn(AddWeekend, "IsPartialWeek", each [WeekMonday] < Param_StartDate, type logical),
+				    AddClosed = Table.AddColumn(AddPartial, "IsClosed", each List.Contains(Ref_ClosedDates[Date], [Date]), type logical),
+				    Final = Table.RemoveColumns(AddClosed, {"WeekMonday"})
+				in
+				    Final
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

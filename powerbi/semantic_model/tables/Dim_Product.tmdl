@@ -1,0 +1,107 @@
+table Dim_Product
+	lineageTag: bd5f65f6-0308-4c72-801c-7c315a0643b1
+
+	column product_id
+		dataType: string
+		lineageTag: 3a3e76a4-1fe6-4b0f-a384-d1b723369c85
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column manufacturer_id
+		dataType: string
+		lineageTag: 464aca5a-348d-4b8d-b520-5787944591d4
+		summarizeBy: none
+		sourceColumn: manufacturer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: 81f7bd33-c997-41ff-9ca4-916bbd04b331
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand
+		dataType: string
+		lineageTag: d15d65e5-bd9f-4b8a-9d88-402d3af403f7
+		summarizeBy: none
+		sourceColumn: brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category
+		dataType: string
+		lineageTag: b91fb57c-7baa-4b65-b825-c134690b530f
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_type
+		dataType: string
+		lineageTag: 5d211d72-5870-404a-b8a7-a9feabb70707
+		summarizeBy: none
+		sourceColumn: product_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column package_size
+		dataType: string
+		lineageTag: c265adc5-d109-4283-9066-62c1068b2bfd
+		summarizeBy: none
+		sourceColumn: package_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsFuel
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 81ba1c64-0519-4c45-92f4-91dbfb7fff61
+		summarizeBy: none
+		sourceColumn: IsFuel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Product = m
+		mode: import
+		source =
+				// Query: Dim_Product   (Enable load: on). 92,331 products from the product file + 17 products that appear on sales lines but not in the file.
+				// References only other queries (Products_Raw, Transactions_Raw) and reads no file itself, so the Formula.Firewall allows it.
+				// DQ03: IsFuel marks petrol (product_type starts with GASOLINE). Its "quantity" is not a unit count, so Units measures exclude it.
+				// DQ04: sales-line products missing from the product file are added with department UNKNOWN, so no sales fall out of a chart.
+				let
+				    Products = Products_Raw,
+				    // keys that are on sales lines but not in the product file
+				    FactKeys = Table.Distinct(Table.SelectColumns(Transactions_Raw, {"product_id"})),
+				    Unmatched = Table.RemoveColumns(
+				        Table.NestedJoin(FactKeys, {"product_id"}, Products, {"product_id"}, "m", JoinKind.LeftAnti), {"m"}
+				    ),
+				    UnknownRows = Table.AddColumn(
+				        Table.AddColumn(
+				            Table.AddColumn(
+				                Table.AddColumn(
+				                    Table.AddColumn(
+				                        Table.AddColumn(Unmatched, "manufacturer_id", each null, type text),
+				                        "department", each "UNKNOWN", type text),
+				                    "brand", each "Unknown", type text),
+				                "product_category", each "UNKNOWN", type text),
+				            "product_type", each "UNKNOWN", type text),
+				        "package_size", each null, type text
+				    ),
+				    Combined = Table.Combine({Products, Table.ReorderColumns(UnknownRows, Table.ColumnNames(Products))}),
+				    AddFuel = Table.AddColumn(
+				        Combined, "IsFuel",
+				        each [product_type] <> null and Text.StartsWith([product_type], "GASOLINE"),
+				        type logical
+				    )
+				in
+				    AddFuel
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

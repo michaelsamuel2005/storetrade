@@ -1,0 +1,150 @@
+table Recon_Control
+	lineageTag: b038103f-548d-400d-b9fe-d2ba79620e19
+
+	column source
+		dataType: string
+		lineageTag: a8ccbfd6-f1e2-4a50-83a7-6db6e5ccda85
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_rows
+		dataType: int64
+		formatString: #,0
+		lineageTag: b08e81fb-5056-4d7a-9598-600e51efffc4
+		summarizeBy: none
+		sourceColumn: expected_rows
+
+		annotation SummarizationSetBy = User
+
+	column expected_sales_value
+		dataType: decimal
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: 94ba404f-780f-4e9e-953d-c02ef2e1bf5e
+		summarizeBy: none
+		sourceColumn: expected_sales_value
+
+		annotation SummarizationSetBy = User
+
+	column expected_retail_disc
+		dataType: decimal
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: d6391f6e-05ef-47da-9535-fdc8eeaa21c7
+		summarizeBy: none
+		sourceColumn: expected_retail_disc
+
+		annotation SummarizationSetBy = User
+
+	column expected_coupon_disc
+		dataType: decimal
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: 3ffddc4f-005a-4602-92f3-7ff7d6727c67
+		summarizeBy: none
+		sourceColumn: expected_coupon_disc
+
+		annotation SummarizationSetBy = User
+
+	column expected_coupon_match_disc
+		dataType: decimal
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		lineageTag: b14d645c-c35c-445c-a798-1c5f800ec641
+		summarizeBy: none
+		sourceColumn: expected_coupon_match_disc
+
+		annotation SummarizationSetBy = User
+
+	column expected_baskets
+		dataType: int64
+		formatString: #,0
+		lineageTag: a98af127-2566-43ec-a830-7c3cfe321fa7
+		summarizeBy: none
+		sourceColumn: expected_baskets
+
+		annotation SummarizationSetBy = User
+
+	column expected_households
+		dataType: int64
+		formatString: #,0
+		lineageTag: a6c37d3b-b928-4eb8-b001-97fc1bb2000e
+		summarizeBy: none
+		sourceColumn: expected_households
+
+		annotation SummarizationSetBy = User
+
+	column expected_stores
+		dataType: int64
+		formatString: #,0
+		lineageTag: 454b4ee2-9c0c-48a3-b93a-f48514eec964
+		summarizeBy: none
+		sourceColumn: expected_stores
+
+		annotation SummarizationSetBy = User
+
+	column expected_products_sold
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2a019325-c2bc-46f0-8eea-1ed13d754ccb
+		summarizeBy: none
+		sourceColumn: expected_products_sold
+
+		annotation SummarizationSetBy = User
+
+	column expected_product_rows
+		dataType: int64
+		formatString: #,0
+		lineageTag: 48c7fbe9-4791-45ac-b478-470204137796
+		summarizeBy: none
+		sourceColumn: expected_product_rows
+
+		annotation SummarizationSetBy = User
+
+	column min_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2d27ddef-e8c1-4f05-9d91-2dd2057eb2fc
+		summarizeBy: none
+		sourceColumn: min_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column max_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a53278db-d6f2-4387-954b-3eefc2380f49
+		summarizeBy: none
+		sourceColumn: max_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Recon_Control = m
+		mode: import
+		source =
+				// Query: Recon_Control   (Enable load: on). Control totals written by scripts/export_raw.R from the source object,
+				// before any Power BI step. The Reconciliation page compares them with what the model loaded.
+				let
+				    Source = Csv.Document(
+				        File.Contents(Param_DataFolder & "control_totals.csv"),
+				        [Delimiter = ",", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(
+				        Promoted,
+				        {{"source", type text}, {"expected_rows", Int64.Type}, {"expected_sales_value", Currency.Type},
+				         {"expected_retail_disc", Currency.Type}, {"expected_coupon_disc", Currency.Type},
+				         {"expected_coupon_match_disc", Currency.Type}, {"expected_baskets", Int64.Type},
+				         {"expected_households", Int64.Type}, {"expected_stores", Int64.Type}, {"expected_products_sold", Int64.Type},
+				         {"expected_product_rows", Int64.Type}, {"min_date", type date}, {"max_date", type date}},
+				        "en-US"
+				    )
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

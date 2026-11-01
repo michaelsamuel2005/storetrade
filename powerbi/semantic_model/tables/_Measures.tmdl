@@ -1,0 +1,326 @@
+table _Measures
+	lineageTag: 319f1d5d-7d8f-474e-b7e9-5af905343349
+
+	measure Sales = SUM ( Fact_Sales[sales_value] )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 1 Sales and discounts
+		lineageTag: 80cf76d5-5e0b-49e8-8846-9115a3f0a9ca
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Gross Sales' = SUM ( Fact_Sales[shelf_value] )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 1 Sales and discounts
+		lineageTag: 5894cb61-496c-4c54-8c1e-9b6792a90b3e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Retail Discount' = SUM ( Fact_Sales[retail_disc] )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 1 Sales and discounts
+		lineageTag: b28f2977-90c9-4130-a953-609dd3b3e010
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Coupon Match Discount' = SUM ( Fact_Sales[coupon_match_disc] )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 1 Sales and discounts
+		lineageTag: 8feee408-874a-443b-836d-11ad35a6c606
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Discount' = [Retail Discount] + [Coupon Match Discount]
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 1 Sales and discounts
+		lineageTag: 8b70fb63-3634-4d91-bbae-157e864b3307
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Discount %' = DIVIDE ( [Total Discount], [Gross Sales] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Sales and discounts
+		lineageTag: 242ab609-6174-4f21-98ed-b5e6432c44c5
+
+	measure 'Manufacturer Coupon Value' = SUM ( Fact_Sales[coupon_disc] )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 1 Sales and discounts
+		lineageTag: 6b5f242b-7c95-42e3-9bd0-b9d2c66d832a
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Baskets = DISTINCTCOUNT ( Fact_Sales[basket_id] )
+		formatString: #,0
+		displayFolder: 2 Baskets and units
+		lineageTag: 5f02f868-0b3f-46bf-b5cb-cac57c25030f
+
+	measure Households = DISTINCTCOUNT ( Fact_Sales[household_id] )
+		formatString: #,0
+		displayFolder: 2 Baskets and units
+		lineageTag: e1362d63-bf30-4bf8-a761-c275c7532ffb
+
+	measure Units = CALCULATE ( SUM ( Fact_Sales[quantity] ), Dim_Product[IsFuel] = FALSE () )
+		formatString: #,0
+		displayFolder: 2 Baskets and units
+		lineageTag: b14a333c-7018-4415-9e25-9d41f92f5783
+
+	measure 'Sales ex Fuel' = CALCULATE ( [Sales], Dim_Product[IsFuel] = FALSE () )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 2 Baskets and units
+		lineageTag: d8e04ca1-f1c1-4810-a25f-329170b33454
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Fuel Sales' = CALCULATE ( [Sales], Dim_Product[IsFuel] = TRUE () )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 2 Baskets and units
+		lineageTag: 87283d78-bc66-4b0f-956c-4d7db6d9a6c6
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Avg Basket Value' = DIVIDE ( [Sales], [Baskets] )
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		displayFolder: 2 Baskets and units
+		lineageTag: f3f61847-c717-47e2-9d24-06775877ac59
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Items per Basket' = DIVIDE ( [Units], CALCULATE ( [Baskets], Dim_Product[IsFuel] = FALSE () ) )
+		formatString: #,0.0
+		displayFolder: 2 Baskets and units
+		lineageTag: c0f1e1b3-52cd-477d-83c8-bcb3143b4b66
+
+	measure 'Avg Selling Price' = DIVIDE ( [Sales ex Fuel], [Units] )
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		displayFolder: 2 Baskets and units
+		lineageTag: 0cd609bf-dbfb-406d-9ebb-4944c4137384
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Private Label Share' = DIVIDE ( CALCULATE ( [Sales ex Fuel], Dim_Product[brand] = "Private" ), [Sales ex Fuel] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Baskets and units
+		lineageTag: df0ecf3a-baef-4f00-8b73-4eefcdb6cbaa
+
+	measure 'Share of Total Sales' = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( Dim_Product ) ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Mix and ranking
+		lineageTag: a0ea121d-8b12-4294-b926-64103fdb0841
+
+	measure 'Share of Department Sales' =
+			DIVIDE (
+			    [Sales],
+			    CALCULATE ( [Sales], REMOVEFILTERS ( Dim_Product[product_category] ), REMOVEFILTERS ( Dim_Product[product_type] ) )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Mix and ranking
+		lineageTag: 33737ce1-b394-49aa-99af-5d0505bde622
+
+	/// Store measures rank and compare whole stores: ALLSELECTED over a sort-by column (store_label sorts by store_no) ranked every row 1 in Power BI Desktop, so these use the whole Dim_Store table. Blank on totals.
+	measure 'Store Rank' = IF ( HASONEVALUE ( Dim_Store[store_id] ), RANKX ( ALLSELECTED ( Dim_Store ), [Sales], , DESC, DENSE ) )
+		formatString: #,0
+		displayFolder: 3 Mix and ranking
+		lineageTag: 26fb5237-b71c-41d6-9535-b1035f623511
+
+	measure 'Sales vs Store Avg %' =
+			IF (
+			    HASONEVALUE ( Dim_Store[store_id] ),
+			    DIVIDE ( [Sales], CALCULATE ( AVERAGEX ( VALUES ( Dim_Store[store_id] ), [Sales] ), REMOVEFILTERS ( Dim_Store ) ) ) - 1
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Mix and ranking
+		lineageTag: 87bd39b2-067b-4bf1-b6e0-8f0f1d46d284
+
+	measure 'Discount % ex Fuel' = CALCULATE ( [Discount %], Dim_Product[IsFuel] = FALSE () )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Sales and discounts
+		lineageTag: 1f02501b-d4ee-4bd5-9937-265861a201e4
+
+	measure 'Discount % (depts over $10k)' = IF ( [Sales ex Fuel] >= 10000, [Discount % ex Fuel] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 7 Report helpers
+		lineageTag: 897abce8-6f2c-4340-9a7f-800d02db6732
+
+	measure 'Private Label Share (depts over $10k)' = IF ( [Sales ex Fuel] >= 10000, [Private Label Share] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 7 Report helpers
+		lineageTag: e9b68cd1-6207-4066-b68b-446fc33849b7
+
+	measure 'Retail Discount (depts over $10k)' = IF ( [Sales ex Fuel] >= 10000, CALCULATE ( [Retail Discount], Dim_Product[IsFuel] = FALSE () ) )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 7 Report helpers
+		lineageTag: be4fcc01-505e-4012-8bd1-7fe32cac080d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Coupon Match Discount (depts over $10k)' = IF ( [Sales ex Fuel] >= 10000, CALCULATE ( [Coupon Match Discount], Dim_Product[IsFuel] = FALSE () ) )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 7 Report helpers
+		lineageTag: 70afbb67-30ee-4d6a-b339-59d4ad88a540
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Sales per Trading Day' = DIVIDE ( [Sales], CALCULATE ( COUNTROWS ( Dim_Date ), Dim_Date[IsClosed] = FALSE () ) )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 4 Time
+		lineageTag: 6fb12a39-e736-4b0e-a473-4bc9c1cf6adc
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Sales PW' =
+			VAR w = SELECTEDVALUE ( Dim_Date[WeekNo] )
+			VAR prevIsFullWeek =
+			    CALCULATE ( COUNTROWS ( Dim_Date ), ALL ( Dim_Date ), Dim_Date[WeekNo] = w - 1, Dim_Date[IsPartialWeek] = FALSE () )
+			RETURN
+			    IF ( ISBLANK ( w ) || ISBLANK ( prevIsFullWeek ), BLANK (), CALCULATE ( [Sales], ALL ( Dim_Date ), Dim_Date[WeekNo] = w - 1 ) )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 4 Time
+		lineageTag: 1c97385a-c39e-4d21-b06d-906be580cb13
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Sales WoW %' = IF ( ISBLANK ( [Sales PW] ), BLANK (), DIVIDE ( [Sales] - [Sales PW], [Sales PW] ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Time
+		lineageTag: e32055af-e3f0-4ba1-9847-86ae0a522842
+
+	measure 'Rolling 4 Week Sales' =
+			VAR w = SELECTEDVALUE ( Dim_Date[WeekNo] )
+			VAR window =
+			    FILTER ( ALL ( Dim_Date ), Dim_Date[WeekNo] > w - 4 && Dim_Date[WeekNo] <= w && NOT ( Dim_Date[IsPartialWeek] ) )
+			VAR fullWeeks = CALCULATE ( DISTINCTCOUNT ( Dim_Date[WeekNo] ), window )
+			RETURN
+			    IF ( ISBLANK ( w ) || fullWeeks < 4, BLANK (), CALCULATE ( [Sales], window ) )
+		formatString: \$#,0;-\$#,0;\$#,0
+		displayFolder: 4 Time
+		lineageTag: 22a5cc5c-d825-40eb-a6eb-bc3a3bce4a1d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Zero-Quantity Lines' = CALCULATE ( COUNTROWS ( Fact_Sales ), Fact_Sales[line_flag] = "Zero quantity" ) + 0
+		formatString: #,0
+		displayFolder: 5 Data quality
+		lineageTag: 55563526-38b9-477e-a228-bd3d9e49a0ce
+
+	measure 'Zero-Quantity Sales' = CALCULATE ( [Sales], Fact_Sales[line_flag] = "Zero quantity" )
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		displayFolder: 5 Data quality
+		lineageTag: d2aec3ef-3247-4a48-a7a6-ed284f043704
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Free-Item Lines' = CALCULATE ( COUNTROWS ( Fact_Sales ), Fact_Sales[line_flag] = "Free item" ) + 0
+		formatString: #,0
+		displayFolder: 5 Data quality
+		lineageTag: d288ebdd-4492-4992-b4f8-17dd406dd405
+
+	measure 'Fuel Lines' = CALCULATE ( COUNTROWS ( Fact_Sales ), Dim_Product[IsFuel] = TRUE () ) + 0
+		formatString: #,0
+		displayFolder: 5 Data quality
+		lineageTag: ca7cdf1a-3b59-4851-93ef-8c00b1f83067
+
+	measure 'Unknown-Product Lines' = CALCULATE ( COUNTROWS ( Fact_Sales ), Dim_Product[department] = "UNKNOWN" ) + 0
+		formatString: #,0
+		displayFolder: 5 Data quality
+		lineageTag: 2eea9451-b4b2-4248-be06-917da9236553
+
+	measure 'Unknown-Product Sales' = CALCULATE ( [Sales], Dim_Product[department] = "UNKNOWN" )
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		displayFolder: 5 Data quality
+		lineageTag: 60d2f872-a73e-4104-b439-f025434d2210
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	/// Heavy (scans every line): keep these three on the Data Quality page only
+	measure 'Source Week Mismatch Lines' = COUNTROWS ( FILTER ( Fact_Sales, Fact_Sales[source_week] <> RELATED ( Dim_Date[WeekNo] ) ) ) + 0
+		formatString: #,0
+		displayFolder: 5 Data quality
+		lineageTag: 770773c6-44fd-4504-adc6-b6401e2a49c4
+
+	measure 'Negative-Value Lines' =
+			COUNTROWS (
+			    FILTER (
+			        Fact_Sales,
+			        Fact_Sales[sales_value] < 0 || Fact_Sales[retail_disc] < 0
+			            || Fact_Sales[coupon_disc] < 0 || Fact_Sales[coupon_match_disc] < 0
+			    )
+			) + 0
+		formatString: #,0
+		displayFolder: 5 Data quality
+		lineageTag: f07409f5-6413-4702-b66d-3c28d49f9f24
+
+	/// DISTINCT of the whole table removes rows identical in every column, so the difference is the exact duplicates
+	measure 'Exact Duplicate Lines' = COUNTROWS ( Fact_Sales ) - COUNTROWS ( DISTINCT ( Fact_Sales ) ) + 0
+		formatString: #,0
+		displayFolder: 5 Data quality
+		lineageTag: b12c798b-7db2-4b48-952e-867337065887
+
+	measure 'Loaded Rows (all)' = CALCULATE ( COUNTROWS ( Fact_Sales ), REMOVEFILTERS () )
+		formatString: #,0
+		displayFolder: 6 Reconciliation
+		lineageTag: 99266664-4e9d-4113-8549-f90e3b85d31b
+
+	measure 'Sales (all)' = CALCULATE ( SUM ( Fact_Sales[sales_value] ), REMOVEFILTERS () )
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		displayFolder: 6 Reconciliation
+		lineageTag: 9c5973af-c4b2-48f9-9bd9-f5bdbd9a7b4b
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Control Rows' = SUM ( Recon_Control[expected_rows] )
+		formatString: #,0
+		displayFolder: 6 Reconciliation
+		lineageTag: cd545ffc-7513-41d2-8f21-963fbcc54aff
+
+	measure 'Control Sales' = SUM ( Recon_Control[expected_sales_value] )
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		displayFolder: 6 Reconciliation
+		lineageTag: 418f99c9-4cb9-4d41-930f-328c670f0ee7
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Row Difference' = [Loaded Rows (all)] - [Control Rows]
+		formatString: #,0
+		displayFolder: 6 Reconciliation
+		lineageTag: 91685008-fee0-4e84-a468-17dc7f91e0df
+
+	measure 'Sales Difference' = ROUND ( [Sales (all)] - [Control Sales], 2 )
+		formatString: \$#,0.00;-\$#,0.00;\$#,0.00
+		displayFolder: 6 Reconciliation
+		lineageTag: d2aeffc1-8f75-448d-b677-c0f21ef6a50e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Actual (DQ rule)' =
+			SWITCH (
+			    SELECTEDVALUE ( DQ_Rules[RuleID] ),
+			    "DQ01", [Zero-Quantity Lines],
+			    "DQ02", [Free-Item Lines],
+			    "DQ03", [Fuel Lines],
+			    "DQ04", [Unknown-Product Lines],
+			    "DQ05", [Negative-Value Lines],
+			    "DQ06", [Exact Duplicate Lines],
+			    "DQ07", CALCULATE ( COUNTROWS ( Dim_Date ), Dim_Date[IsClosed] = TRUE () ),
+			    "DQ08", [Source Week Mismatch Lines],
+			    BLANK ()
+			)
+		formatString: #,0
+		displayFolder: 6 Reconciliation
+		lineageTag: b24ee36c-7871-4605-aa00-1c499975c2c1
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 7a7a6240-55dd-4f96-a3ed-7eec737c42d5
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				// Holds the measures only (Home > Enter data equivalent)
+				#table(type table [Column1 = text], {})
+
+	annotation PBI_ResultType = Table
+

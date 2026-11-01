@@ -1,0 +1,93 @@
+expression Param_DataFolder = "C:\storetrade\data\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: d06aaf76-d5f7-4dd6-8477-dc805bfc2182
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Param_StartDate = #date(2017, 1, 1) meta [IsParameterQuery = true, Type = "Date", IsParameterQueryRequired = true]
+	lineageTag: 6a98b1e8-4bc8-464c-b565-dbfc58a1d2c3
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Date
+
+expression Param_EndDate = #date(2017, 12, 31) meta [IsParameterQuery = true, Type = "Date", IsParameterQueryRequired = true]
+	lineageTag: 872d4312-b4fa-45f3-af8f-4595fd5a01c4
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Date
+
+expression Ref_ClosedDates =
+		// Query: Ref_ClosedDates   (Enable load: off)
+		// Calendar days with no transactions in the extract, found by comparing every calendar day with the dates in the data (rule DQ07).
+		// Christmas Day: the stores were closed, so a zero is not a trading result. Add a row if a refresh brings new data.
+		let
+		    Source = #table(
+		        type table [Date = date, Reason = text],
+		        {
+		            {#date(2017, 12, 25), "Christmas Day: no transactions in the extract"}
+		        }
+		    )
+		in
+		    Source
+	lineageTag: 8d052145-f16a-42ec-af9d-c7dcde742b11
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Transactions_Raw =
+		// Query: Transactions_Raw   (Enable load: off)
+		// Step 1 of the data flow: read the CSV as exported, set types. No rows are removed or changed here.
+		// Keys are text on purpose (store_id "330" is a label, not a number; text keys also match the product file exactly).
+		let
+		    Source = Csv.Document(
+		        File.Contents(Param_DataFolder & "transactions.csv"),
+		        [Delimiter = ",", Columns = 11, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+		    ),
+		    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+		    Typed = Table.TransformColumnTypes(
+		        Promoted,
+		        {
+		            {"household_id", type text}, {"store_id", type text}, {"basket_id", type text}, {"product_id", type text},
+		            {"quantity", type number},
+		            {"sales_value", Currency.Type}, {"retail_disc", Currency.Type},
+		            {"coupon_disc", Currency.Type}, {"coupon_match_disc", Currency.Type},
+		            {"week", Int64.Type}, {"transaction_timestamp", type datetime}
+		        },
+		        "en-US"
+		    )
+		in
+		    Typed
+	lineageTag: c9402d8c-9d8c-4124-b14c-9a6a7eb9339c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Products_Raw =
+		// Query: Products_Raw   (Enable load: off)
+		// Staging query: reads products.csv and sets types, nothing else. Kept separate from Dim_Product so that no query both
+		// reads a file and references another query (that combination triggers Power Query's Formula.Firewall error).
+		let
+		    Source = Csv.Document(
+		        File.Contents(Param_DataFolder & "products.csv"),
+		        [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+		    ),
+		    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+		    Typed = Table.TransformColumnTypes(
+		        Promoted,
+		        {{"product_id", type text}, {"manufacturer_id", type text}, {"department", type text}, {"brand", type text},
+		         {"product_category", type text}, {"product_type", type text}, {"package_size", type text}},
+		        "en-US"
+		    )
+		in
+		    Typed
+	lineageTag: 6181d1be-b596-4bcd-8f9c-9a9208dfa775
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
